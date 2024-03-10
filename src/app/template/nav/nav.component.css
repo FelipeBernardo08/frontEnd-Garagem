@@ -1,0 +1,46 @@
+.nav{
+    background-color: rgb(64, 64, 64);
+}
+
+.menuOpen{
+    position: absolute;
+    bottom: 0;
+}
+
+.nome-menu{
+    margin-left: 5px;
+}
+
+.abrir-menu{
+    animation: animation-open;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.fechar-menu{
+    animation: animation-close;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+mat-nav-list a:hover{
+    background-color: rgba(255, 255, 255, 0.163);
+}
+
+@keyframes animation-open {
+    from{
+        width: 60px;
+    }
+    to{
+        width: 180px;
+    }
+}
+
+@keyframes animation-close{
+    from{
+        width: 180px;
+    }
+    to{ 
+        width: 60px
+    }
+}
