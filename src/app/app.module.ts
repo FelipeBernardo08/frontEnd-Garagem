@@ -26,6 +26,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { VendasComponent } from './componentes/vendas/vendas.component';
 import { CriarVendasComponent } from './componentes/vendas/criar-vendas/criar-vendas.component';
 import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar-vendas.component';
+import { DespesasComponent } from './componentes/despesas/despesas.component';
+import { CriarDespesasComponent } from './componentes/despesas/criar-despesas/criar-despesas.component';
+import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/editar-despesas.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar
     EditarClienteComponent,
     VendasComponent,
     CriarVendasComponent,
-    EditarVendasComponent
+    EditarVendasComponent,
+    DespesasComponent,
+    CriarDespesasComponent,
+    EditarDespesasComponent
   ],
   imports: [
     BrowserModule,

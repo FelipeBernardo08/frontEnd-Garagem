@@ -11,6 +11,10 @@ import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { CriarClienteComponent } from './componentes/clientes/criar-cliente/criar-cliente.component';
 import { EditarClienteComponent } from './componentes/clientes/editar-cliente/editar-cliente.component';
 import { VendasComponent } from './componentes/vendas/vendas.component';
+import { CriarVendasComponent } from './componentes/vendas/criar-vendas/criar-vendas.component';
+import { DespesasComponent } from './componentes/despesas/despesas.component';
+import { CriarDespesasComponent } from './componentes/despesas/criar-despesas/criar-despesas.component';
+import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/editar-despesas.component';
 
 const routes: Routes = [
   {
@@ -56,6 +60,22 @@ const routes: Routes = [
   {
     path: 'vendas',
     component: VendasComponent
+  },
+  {
+    path: 'venda/criar',
+    component: CriarVendasComponent
+  },
+  {
+    path: 'despesas',
+    component: DespesasComponent
+  },
+  {
+    path: 'despesas/criar',
+    component: CriarDespesasComponent
+  },
+  {
+    path: 'despesas/editar',
+    component: EditarDespesasComponent
   }
 ];
 
