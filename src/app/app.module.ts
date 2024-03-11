@@ -29,6 +29,9 @@ import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar
 import { DespesasComponent } from './componentes/despesas/despesas.component';
 import { CriarDespesasComponent } from './componentes/despesas/criar-despesas/criar-despesas.component';
 import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/editar-despesas.component';
+import { ContratosComponent } from './componentes/contratos/contratos.component';
+import { ContratosCriarComponent } from './componentes/contratos/contratos-criar/contratos-criar.component';
+import { ContratosEditarComponent } from './componentes/contratos/contratos-editar/contratos-editar.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/
     EditarVendasComponent,
     DespesasComponent,
     CriarDespesasComponent,
-    EditarDespesasComponent
+    EditarDespesasComponent,
+    ContratosComponent,
+    ContratosCriarComponent,
+    ContratosEditarComponent
   ],
   imports: [
     BrowserModule,

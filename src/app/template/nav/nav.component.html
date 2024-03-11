@@ -1,7 +1,6 @@
 <mat-sidenav-container class="">
     <mat-sidenav class="sidenav nav" mode="side" opened fixedInViewport="true" fixedTopGap="" id="nav">
         <mat-nav-list>
-
             <a *ngFor="let item of menu" mat-list-item [routerLink]="item.link">
                 <i class="material-icons text-light">{{item.icone}}</i>
                 <span *ngIf="condition == true" class="text-light pt-1 nome-menu">{{item.nome}}</span>
