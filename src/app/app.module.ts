@@ -32,6 +32,7 @@ import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/
 import { ContratosComponent } from './componentes/contratos/contratos.component';
 import { ContratosCriarComponent } from './componentes/contratos/contratos-criar/contratos-criar.component';
 import { ContratosEditarComponent } from './componentes/contratos/contratos-editar/contratos-editar.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ContratosEditarComponent } from './componentes/contratos/contratos-edit
     MatSidenavModule,
     MatListModule,
     MatDatepickerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
