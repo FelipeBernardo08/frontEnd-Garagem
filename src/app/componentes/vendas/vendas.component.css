@@ -1,11 +1,14 @@
-.button-edit{
+.button-edit {
     cursor: pointer;
 }
 
-.botao{
+.botao {
     border-radius: 50px;
 }
 
-input, select, textarea, .card{
+input,
+select,
+textarea,
+.card {
     border: 1px solid rgba(0, 0, 0, 0.351);
 }

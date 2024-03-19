@@ -1,1 +1,69 @@
-<p>criar-vendas works!</p>
+<section class="mt-3 container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3><strong>Cadastrar Venda</strong></h3>
+        </div>
+        <div class="card-body">
+            <form class="row form-floating needs-validation" id="formVenda">
+
+                <div class="col-md-4">
+                    <label for="listaCliente" class="form-label">Cliente</label>
+                    <select name="id_cliente" class="form-select mt-2" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option *ngFor="let item of clientes" [value]="item.id">{{item.nome}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="listaVeiculo" class="form-label">Categoria</label>
+                    <select name="veiculo" class="form-select mt-2" (change)="encontrarVeiculo($event)" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="carro">Carro</option>
+                        <option value="moto">Moto</option>
+                    </select>
+                </div>
+
+                <div *ngIf="carros.length > 0 || motos.length > 0" class="col-md-4">
+                    <label for="listaVeiculo" class="form-label">Selecione o Veículo</label>
+
+                    <select name="id_carro" class="form-select mt-2" *ngIf="carros.length > 0" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option *ngFor="let item of carros" [value]="item.id">{{item.modelo}}
+                            - {{item.potencia_motor}}
+                        </option>
+                    </select>
+
+                    <select name="id_moto" class="form-select mt-2" *ngIf="motos.length > 0" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option *ngFor="let item of motos" [value]="item.id">{{item.modelo}}
+                            - {{item.potencia_motor}}
+                        </option>
+                    </select>
+                </div>
+
+                <div id="ficha" class="mt-5 mb-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-center">
+                                <p>Oi</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-center">
+                                <p>Eai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button class="w-50 btn btn-sm btn-success m-3" type="submit" (click)="enviar()">Cadastrar
+                        Venda</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</section>
