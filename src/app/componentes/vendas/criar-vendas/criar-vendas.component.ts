@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Carro } from 'src/app/interface/carro';
 import { Clientes } from 'src/app/interface/clientes';
 import { Moto } from 'src/app/interface/moto';
+import { Vendas } from 'src/app/interface/vendas';
 import { ConectService } from 'src/app/services/conect.service';
 
 @Component({
@@ -26,7 +28,34 @@ export class CriarVendasComponent implements OnInit {
     end_estado: ''
   }
 
-  constructor(private service: ConectService) { }
+  carro: Carro = {
+    marca: '',
+    modelo: '',
+    potencia_motor: '',
+    valvulas_motor: '',
+    combustivel: '',
+    cambio: '',
+    km_atual: '',
+    ano_fabricacao: '',
+    cor: '',
+    categoria: '',
+    portas: '',
+    placa: '',
+    valor_pago: '',
+    porcentagem_maxima: '',
+    valor: '',
+    vendido: false,
+  }
+
+  venda: Vendas = {
+    id_cliente: '',
+    id_carro: '',
+    id_moto: '',
+    id_vendedor: '',
+    valor_total: ''
+  }
+
+  constructor(private service: ConectService, private router: Router) { }
 
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
@@ -57,16 +86,36 @@ export class CriarVendasComponent implements OnInit {
     }
   }
 
-  public selecionarCliente(i: any) {
-    this.cliente = this.clientes[i]
-    console.log(this.cliente)
+  public selecionarCliente(e: any) {
+    let index = e.target.value
+    for (let i = 0; i < this.clientes.length; i++) {
+      if (this.clientes[i].id == index) {
+        this.cliente = this.clientes[i];
+      }
+    }
+  }
+
+  public selecionarMoto(e: any) {
+
+  }
+
+  public selecionarCarro(e: any) {
+    let index = e.target.value
+    for (let i = 0; i < this.carros.length; i++) {
+      if (this.carros[i].id == index) {
+        this.carro = this.carros[i];
+      }
+    }
   }
 
   public enviar() {
     let form = document.getElementById('formVenda');
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
-
+      this.service.createVenda(this.venda).subscribe(() => {
+        console.log('venda criada com sucesso');
+        this.router.navigate(['/vendas'])
+      });
     }
   }
 }
