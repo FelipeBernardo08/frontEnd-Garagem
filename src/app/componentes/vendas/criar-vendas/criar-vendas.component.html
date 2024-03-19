@@ -1,21 +1,23 @@
 <section class="mt-3 container">
     <div class="card">
         <div class="card-header text-center">
-            <h3><strong>Cadastrar Venda</strong></h3>
+            <h3>Nova Venda</h3>
         </div>
         <div class="card-body">
             <form class="row form-floating needs-validation" id="formVenda">
 
                 <div class="col-md-4">
                     <label for="listaCliente" class="form-label">Cliente</label>
-                    <select name="id_cliente" class="form-select mt-2" required>
+                    <select name="id_cliente" class="form-select mt-2" required (change)="selecionarCliente($event)">
                         <option value="" disabled selected>Selecione</option>
-                        <option *ngFor="let item of clientes" [value]="item.id">{{item.nome}}</option>
+                        <option *ngFor="let item of clientes; let i = index" [value]="i">
+                            {{item.nome}} - CPF: {{item.cpf}}
+                        </option>
                     </select>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="listaVeiculo" class="form-label">Categoria</label>
+                    <label for="listaVeiculo" class="form-label">Tipo do Veículo</label>
                     <select name="veiculo" class="form-select mt-2" (change)="encontrarVeiculo($event)" required>
                         <option value="" disabled selected>Selecione</option>
                         <option value="carro">Carro</option>
@@ -28,14 +30,14 @@
 
                     <select name="id_carro" class="form-select mt-2" *ngIf="carros.length > 0" required>
                         <option value="" disabled selected>Selecione</option>
-                        <option *ngFor="let item of carros" [value]="item.id">{{item.modelo}}
+                        <option *ngFor="let item of carros" [value]="item.id">{{item.marca}} {{item.modelo}}
                             - {{item.potencia_motor}}
                         </option>
                     </select>
 
                     <select name="id_moto" class="form-select mt-2" *ngIf="motos.length > 0" required>
                         <option value="" disabled selected>Selecione</option>
-                        <option *ngFor="let item of motos" [value]="item.id">{{item.modelo}}
+                        <option *ngFor="let item of motos" [value]="item.id">{{item.marca}} {{item.modelo}}
                             - {{item.potencia_motor}}
                         </option>
                     </select>
@@ -44,14 +46,66 @@
                 <div id="ficha" class="mt-5 mb-5">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="d-flex justify-content-center">
-                                <p>Oi</p>
+                            <div class="row">
+                                <div class="col-md-6 mt-2">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <input type="text" name="nome" class="form-control" id="nome" placeholder=""
+                                        [(ngModel)]="cliente.nome" required disabled>
+                                </div>
+
+                                <div class="col-md-6 mt-2">
+                                    <label for="cpf" class="form-label">CPF</label>
+                                    <input type="text" name="cpf" class="form-control" id="cpf" placeholder=""
+                                        [(ngModel)]="cliente.cpf" disabled>
+                                </div>
+
+                                <div class="col-md-8 mt-2">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="text" name="email" class="form-control" id="email" placeholder=""
+                                        [(ngModel)]="cliente.email" disabled>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="nascimento" class="form-label">Data de Nascimento</label>
+                                    <input type="text" name="nascimento" class="form-control" id="data-nascimento"
+                                        placeholder="" [(ngModel)]="cliente.nascimento" disabled>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="rua" class="form-label">Rua</label>
+                                    <input type="text" name="end_rua" class="form-control" id="rua" placeholder=""
+                                        [(ngModel)]="cliente.end_rua" disabled>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="numero" class="form-label">Número</label>
+                                    <input type="text" name="end_numero" class="form-control" id="numero" placeholder=""
+                                        [(ngModel)]="cliente.end_numero" disabled>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="bairro" class="form-label">Bairro</label>
+                                    <input type="text" name="end_bairro" class="form-control" id="bairro" placeholder=""
+                                        [(ngModel)]="cliente.end_bairro" disabled>
+                                </div>
+
+                                <div class="col-md-8 mt-2">
+                                    <label for="cidade" class="form-label">Cidade</label>
+                                    <input type="text" name="end_cidade" class="form-control" id="cidade" placeholder=""
+                                        [(ngModel)]="cliente.end_cidade" disabled>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="uf" class="form-label">UF</label>
+                                    <input type="text" name="end_estado" class="form-control" id="uf" placeholder=""
+                                        [(ngModel)]="cliente.end_estado" disabled>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="d-flex justify-content-center">
-                                <p>Eai</p>
+
                             </div>
                         </div>
                     </div>
@@ -62,8 +116,6 @@
                         Venda</button>
                 </div>
             </form>
-
-
         </div>
     </div>
 </section>

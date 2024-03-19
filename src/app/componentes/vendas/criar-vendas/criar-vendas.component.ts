@@ -14,6 +14,18 @@ export class CriarVendasComponent implements OnInit {
   motos: Moto[] = [];
   clientes: Clientes[] = [];
 
+  cliente: Clientes = {
+    nome: '',
+    cpf: '',
+    nascimento: '',
+    email: '',
+    end_rua: '',
+    end_numero: '',
+    end_bairro: '',
+    end_cidade: '',
+    end_estado: ''
+  }
+
   constructor(private service: ConectService) { }
 
   ngOnInit(): void {
@@ -32,6 +44,8 @@ export class CriarVendasComponent implements OnInit {
   }
 
   public encontrarVeiculo(evento: any) {
+    this.motos = []
+    this.carros = []
     if (evento.target.value == 'carro') {
       this.service.readCarro().subscribe((carro: any) => {
         this.carros = carro;
@@ -43,7 +57,16 @@ export class CriarVendasComponent implements OnInit {
     }
   }
 
-  public enviar() {
+  public selecionarCliente(i: any) {
+    this.cliente = this.clientes[i]
+    console.log(this.cliente)
+  }
 
+  public enviar() {
+    let form = document.getElementById('formVenda');
+    let valid = form?.classList.contains('ng-valid')
+    if (valid) {
+
+    }
   }
 }
