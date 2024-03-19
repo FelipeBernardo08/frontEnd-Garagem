@@ -6,6 +6,7 @@ import { ImagemCarro } from '../interface/imagem-carro';
 import { Moto } from '../interface/moto';
 import { Clientes } from '../interface/clientes';
 import { Vendas } from '../interface/vendas';
+import { Users } from '../interface/users';
 
 @Injectable({
   providedIn: 'root'
@@ -116,5 +117,9 @@ export class ConectService {
 
   createVenda(venda: any): Observable<Vendas> {
     return this.http.post<Vendas>(`${this.baseUrl}/venda`, venda);
+  }
+
+  readUsers(): Observable<Users> {
+    return this.http.get<Users>(`${this.baseUrl}/recuperarUser`);
   }
 }

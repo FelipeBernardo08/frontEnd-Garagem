@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Carro } from 'src/app/interface/carro';
 import { Clientes } from 'src/app/interface/clientes';
 import { Moto } from 'src/app/interface/moto';
+import { Users } from 'src/app/interface/users';
 import { Vendas } from 'src/app/interface/vendas';
 import { ConectService } from 'src/app/services/conect.service';
 
@@ -55,6 +56,8 @@ export class CriarVendasComponent implements OnInit {
     valor_total: ''
   }
 
+  user: Users[] = []
+
   constructor(private service: ConectService, private router: Router) { }
 
   ngOnInit(): void {
@@ -70,6 +73,11 @@ export class CriarVendasComponent implements OnInit {
     this.service.readClientes().subscribe((cliente: any) => {
       this.clientes = cliente;
     });
+
+    this.service.readUsers().subscribe((users: any) => {
+      this.user = users
+      console.log(this.user)
+    })
   }
 
   public encontrarVeiculo(evento: any) {

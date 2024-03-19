@@ -157,8 +157,12 @@
 
                 <div class="col-md-6">
                     <label for="vendedor" class="form-label mt-3">Vendedor</label>
-                    <input type="text" name="vendedor" class="form-control mt-2" [(ngModel)]="venda.id_vendedor"
-                        required placeholder="Digite o Id do Vendedor">
+                    <select name="id_vendedor" [(ngModel)]="venda.id_vendedor" class="form-select mt-2" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option *ngFor="let item of user;" [value]="item.id">
+                            {{item.name}}
+                        </option>
+                    </select>
                 </div>
 
                 <div class="col-md-6">
