@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { Clientes } from 'src/app/interface/clientes';
 import { ConectService } from 'src/app/services/conect.service';
@@ -27,9 +27,9 @@ export class CriarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach((form:any) => {
-      form.addEventListener('submit', (event:any) => {
-        if(form.classList == 'ng-valid'){
+    Array.from(forms).forEach((form: any) => {
+      form.addEventListener('submit', (event: any) => {
+        if (form.classList == 'ng-valid') {
         }
         form.classList.add('was-validated')
       }, false)
@@ -37,12 +37,11 @@ export class CriarClienteComponent implements OnInit {
   }
 
 
-  enviar(){
+  enviar() {
     let form = document.getElementById('formCliente')
     let valid = form?.classList.contains('ng-valid')
-    if(valid){
+    if (valid) {
       this.service.criarCliente(this.cliente).subscribe(() => {
-        console.log('Cliente criado com sucesso!')
         this.route.navigate(['/cliente'])
       })
     }

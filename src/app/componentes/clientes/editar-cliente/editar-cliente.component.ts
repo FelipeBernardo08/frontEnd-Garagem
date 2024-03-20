@@ -27,45 +27,43 @@ export class EditarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach((form:any) => {
-      form.addEventListener('submit', (event:any) => {
-        if(form.classList == 'ng-valid'){
+    Array.from(forms).forEach((form: any) => {
+      form.addEventListener('submit', (event: any) => {
+        if (form.classList == 'ng-valid') {
         }
         form.classList.add('was-validated')
       }, false)
     })
 
-    this.service.readClientesId(this.recuperarIdUrl()).subscribe(clientes =>[
+    this.service.readClientesId(this.recuperarIdUrl()).subscribe(clientes => [
       this.cliente = clientes
-    ]) 
+    ])
   }
 
-  recuperarIdUrl(){
+  recuperarIdUrl() {
     let href = window.location.href
-    let id = href.charAt(href.length -1);
+    let id = href.charAt(href.length - 1);
     return id
   }
 
-  atualizar(){
+  atualizar() {
     let form = document.getElementById('formCliente')
     let valid = form?.classList.contains('ng-valid')
-    if(valid){
-      this.service.updateCliente(this.recuperarIdUrl(), this.cliente).subscribe(()=>{
-        console.log('Dados atualizados com sucesso!')
+    if (valid) {
+      this.service.updateCliente(this.recuperarIdUrl(), this.cliente).subscribe(() => {
         this.retornarListagem();
       })
-    }else{
+    } else {
       //mensagem de erro
     }
   }
 
-  retornarListagem(){
+  retornarListagem() {
     this.router.navigate(['/cliente'])
   }
 
-  desativar(){
+  desativar() {
     this.service.deleteCliente(this.recuperarIdUrl()).subscribe(() => {
-      console.log('Dados excluidos com sucesso!');
       this.retornarListagem();
 
     })

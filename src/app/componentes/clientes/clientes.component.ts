@@ -17,11 +17,10 @@ export class ClientesComponent implements OnInit {
   ngOnInit(): void {
     this.service.readClientes().subscribe(cliente => {
       this.clientes = cliente
-      // console.log(this.clientes)
     })
   }
 
-  editar(id:any){
+  editar(id: any) {
     this.router.navigate([`/cliente/editar/${id}`])
   }
 

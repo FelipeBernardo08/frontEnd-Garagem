@@ -153,6 +153,58 @@
                         </div>
                     </div>
 
+                    <div class="row mt-2" *ngIf="motos.length > 0" id="fichaCarro">
+                        <div class="col-md-6">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" name="marca" class="form-control" id="marca" placeholder=""
+                                [(ngModel)]="moto.marca" disabled>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="modelo" class="form-label">Modelo</label>
+                            <input type="text" name="modelo" class="form-control" id="modelo" placeholder=""
+                                [(ngModel)]="moto.modelo" disabled>
+                        </div>
+
+                        <div class="col-md-4 mt-2">
+                            <label for="motor" class="form-label">Motor</label>
+                            <input type="text" name="motor" class="form-control" id="motor" placeholder=""
+                                [(ngModel)]="moto.potencia_motor" disabled>
+                        </div>
+
+                        <div class="col-md-4  mt-2">
+                            <label for="placa" class="form-label">Placa</label>
+                            <input type="text" name="placa" class="form-control" id="placa" placeholder=""
+                                [(ngModel)]="moto.placa" disabled>
+                        </div>
+
+                        <div class="col-md-4  mt-2">
+                            <label for="cambio" class="form-label">Cambio</label>
+                            <input type="text" name="cambio" class="form-control" id="cambio" placeholder=""
+                                [(ngModel)]="moto.cambio" disabled>
+                        </div>
+
+                        <div class="col-md-4  mt-2">
+                            <label for="cor" class="form-label">Cor</label>
+                            <input type="text" name="cor" class="form-control" id="cor" placeholder=""
+                                [(ngModel)]="moto.cor" disabled>
+                        </div>
+
+
+                        <div class="col-md-4  mt-2">
+                            <label for="km" class="form-label">KM</label>
+                            <input type="text" name="km" class="form-control" id="km" placeholder=""
+                                [(ngModel)]="moto.km_atual" disabled>
+                        </div>
+
+
+                        <div class="col-md-4  mt-2">
+                            <label for="valor" class="form-label">Valor</label>
+                            <input type="text" name="valor" class="form-control" id="valor" placeholder=""
+                                [(ngModel)]="moto.valor" disabled>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-md-6">

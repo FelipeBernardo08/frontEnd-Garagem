@@ -48,6 +48,27 @@ export class CriarVendasComponent implements OnInit {
     vendido: false,
   }
 
+  moto: Moto = {
+    marca: '',
+    modelo: '',
+    potencia_motor: '',
+    combustivel: '',
+    freio: '',
+    cambio: '',
+    km_atual: '',
+    ano_fabricacao: '',
+    cor: '',
+
+    placa: '',
+    ipva_pago: false,
+    ipva_valor: '',
+    fipe: '',
+    valor_pago: '',
+    porcentagem_maxima: '',
+    valor: '',
+    vendido: false,
+  }
+
   venda: Vendas = {
     id_cliente: '',
     id_carro: '',
@@ -76,7 +97,6 @@ export class CriarVendasComponent implements OnInit {
 
     this.service.readUsers().subscribe((users: any) => {
       this.user = users
-      console.log(this.user)
     })
   }
 
@@ -104,7 +124,12 @@ export class CriarVendasComponent implements OnInit {
   }
 
   public selecionarMoto(e: any) {
-
+    let index = e.target.value
+    for (let i = 0; i < this.motos.length; i++) {
+      if (this.motos[i].id == index) {
+        this.moto = this.motos[i];
+      }
+    }
   }
 
   public selecionarCarro(e: any) {
@@ -121,7 +146,6 @@ export class CriarVendasComponent implements OnInit {
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
       this.service.createVenda(this.venda).subscribe(() => {
-        console.log('venda criada com sucesso');
         this.router.navigate(['/vendas'])
       });
     }

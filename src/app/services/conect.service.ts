@@ -119,6 +119,10 @@ export class ConectService {
     return this.http.post<Vendas>(`${this.baseUrl}/venda`, venda);
   }
 
+  getVenda(): Observable<Vendas> {
+    return this.http.get<Vendas>(`${this.baseUrl}/venda`);
+  }
+
   readUsers(): Observable<Users> {
     return this.http.get<Users>(`${this.baseUrl}/recuperarUser`);
   }
