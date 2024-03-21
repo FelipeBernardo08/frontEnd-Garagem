@@ -18,11 +18,10 @@ export class CarroComponent implements OnInit {
   ngOnInit(): void {
     this.service.readCarro().subscribe(carros => {
       for (let i = 0; i < carros.length; i++) {
-        if (carros[i].vendido != null) {
+        if (carros[i].vendido != true) {
           this.carro[i] = carros[i]
         }
       }
-      // this.carro = carros
       for (let i = 0; i < this.carro.length; i++) {
         this.valorTotal += this.carro[i].valor
       }

@@ -137,6 +137,7 @@ export class CriarVendasComponent implements OnInit {
     for (let i = 0; i < this.carros.length; i++) {
       if (this.carros[i].id == index) {
         this.carro = this.carros[i];
+        console.log(this.carro)
       }
     }
   }
@@ -147,6 +148,12 @@ export class CriarVendasComponent implements OnInit {
     if (valid) {
       this.service.createVenda(this.venda).subscribe(() => {
         this.router.navigate(['/venda'])
+        this.carro.fotos = this.carro.id
+        this.carro.vendido = true
+        console.log(this.carro)
+        this.service.updateCarro(this.carro, this.carro.id).subscribe(() => {
+          console.log('ok')
+        });
       });
     }
   }
