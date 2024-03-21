@@ -18,6 +18,7 @@ import { EditarDespesasComponent } from './componentes/despesas/editar-despesas/
 import { ContratosComponent } from './componentes/contratos/contratos.component';
 import { ContratosCriarComponent } from './componentes/contratos/contratos-criar/contratos-criar.component';
 import { ContratosEditarComponent } from './componentes/contratos/contratos-editar/contratos-editar.component';
+import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar-vendas.component';
 
 const routes: Routes = [
   {
@@ -61,12 +62,16 @@ const routes: Routes = [
     component: EditarClienteComponent
   },
   {
-    path: 'vendas',
+    path: 'venda',
     component: VendasComponent
   },
   {
     path: 'venda/criar',
     component: CriarVendasComponent
+  },
+  {
+    path: 'venda/visualizar/:id',
+    component: EditarVendasComponent
   },
   {
     path: 'despesas',

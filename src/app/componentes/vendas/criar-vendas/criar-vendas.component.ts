@@ -146,7 +146,7 @@ export class CriarVendasComponent implements OnInit {
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
       this.service.createVenda(this.venda).subscribe(() => {
-        this.router.navigate(['/vendas'])
+        this.router.navigate(['/venda'])
       });
     }
   }

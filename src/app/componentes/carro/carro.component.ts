@@ -17,15 +17,20 @@ export class CarroComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.readCarro().subscribe(carros => {
-      this.carro = carros
-      for(let i = 0; i < this.carro.length; i++){
+      for (let i = 0; i < carros.length; i++) {
+        if (carros[i].vendido != null) {
+          this.carro[i] = carros[i]
+        }
+      }
+      // this.carro = carros
+      for (let i = 0; i < this.carro.length; i++) {
         this.valorTotal += this.carro[i].valor
       }
     })
     this.img = this.service.urlImg
   }
 
-  editar(id:number){
+  editar(id: number) {
     this.router.navigate([`/carro/editar/${id}`])
   }
 }

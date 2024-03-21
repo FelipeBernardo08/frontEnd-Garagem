@@ -45,7 +45,10 @@
                                 </td>
                                 <td>R$ {{item.valor_total}}</td>
                                 <td>{{item.created_at | date: 'dd/MM/yyyy'}}</td>
-                                <td><a routerLink="">Editar</a></td>
+                                <td>
+                                    <i class="material-icons text-info button-visibility"
+                                        (click)="visualizar(item.id)">visibility</i>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

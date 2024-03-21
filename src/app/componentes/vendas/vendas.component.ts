@@ -20,5 +20,8 @@ export class VendasComponent implements OnInit {
     })
   }
 
+  public visualizar(id: any): void {
+    this.router.navigate([`/venda/visualizar/${id}`])
+  }
 
 }

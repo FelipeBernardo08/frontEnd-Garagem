@@ -223,9 +223,17 @@
                         required placeholder="R$">
                 </div>
 
-                <div class="d-flex justify-content-center mt-3">
-                    <button class="w-50 btn btn-sm btn-success m-3" type="submit" (click)="enviar()">Cadastrar
-                        Venda</button>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <button class="w-100 btn btn-sm btn-danger m-3" routerLink="/venda">
+                            Cancelar
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="w-100 btn btn-sm btn-success m-3" type="submit" (click)="enviar()">
+                            Cadastrar Venda
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
