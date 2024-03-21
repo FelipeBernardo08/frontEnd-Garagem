@@ -19,11 +19,9 @@ export class CarroComponent implements OnInit {
     this.service.readCarro().subscribe(carros => {
       for (let i = 0; i < carros.length; i++) {
         if (carros[i].vendido != true) {
-          this.carro[i] = carros[i]
+          this.carro.push(carros[i])
+          this.valorTotal += carros[i].valor
         }
-      }
-      for (let i = 0; i < this.carro.length; i++) {
-        this.valorTotal += this.carro[i].valor
       }
     })
     this.img = this.service.urlImg
