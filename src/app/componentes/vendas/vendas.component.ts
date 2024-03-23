@@ -23,6 +23,9 @@ export class VendasComponent implements OnInit {
       }
       console.log(this.valorTotal)
     })
+
+    let conteudo = document.getElementById('listaVendas')?.innerHTML;
+    console.log(conteudo)
   }
 
   public visualizar(id: any): void {

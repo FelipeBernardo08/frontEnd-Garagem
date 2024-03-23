@@ -1,1 +1,19 @@
-<p>contratos works!</p>
+<section id="contratoImprimir">
+    <div style="text-align: center;">
+        <div *ngFor="let item of contrato" style="margin: 20px;">
+
+            <h3 style="font-weight: bold; color: rgb(0, 195, 255);">
+                {{item.titulo_contrato}}
+            </h3>
+
+            <div style="margin: 5px; font-size: 15px;" [innerHTML]="item.corpo_contrato.replace(';', '\n')">
+                <!-- {{item.corpo_contrato}} -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="d-flex justify-content-center">
+    <div class="btn btn-sm btn-success" (click)="imprimir()">Concluir</div>
+</section>

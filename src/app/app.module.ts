@@ -21,8 +21,8 @@ import { CriarMotoComponent } from './componentes/moto/criar-moto/criar-moto.com
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { CriarClienteComponent } from './componentes/clientes/criar-cliente/criar-cliente.component';
 import { EditarClienteComponent } from './componentes/clientes/editar-cliente/editar-cliente.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { VendasComponent } from './componentes/vendas/vendas.component';
 import { CriarVendasComponent } from './componentes/vendas/criar-vendas/criar-vendas.component';
 import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar-vendas.component';

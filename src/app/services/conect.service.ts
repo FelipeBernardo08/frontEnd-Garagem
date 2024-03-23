@@ -7,6 +7,7 @@ import { Moto } from '../interface/moto';
 import { Clientes } from '../interface/clientes';
 import { Vendas } from '../interface/vendas';
 import { Users } from '../interface/users';
+import { Contrato } from '../interface/contrato';
 
 @Injectable({
   providedIn: 'root'
@@ -125,5 +126,13 @@ export class ConectService {
 
   readUsers(): Observable<Users> {
     return this.http.get<Users>(`${this.baseUrl}/recuperarUser`);
+  }
+
+  createContrato(contrato: any): Observable<Contrato> {
+    return this.http.post<Contrato>(`${this.baseUrl}/contrato`, contrato);
+  }
+
+  readContrato(): Observable<Contrato> {
+    return this.http.get<Contrato>(`${this.baseUrl}/contrato`);
   }
 }
