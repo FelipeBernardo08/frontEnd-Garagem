@@ -103,6 +103,7 @@ export class CriarVendasComponent implements OnInit {
   public encontrarVeiculo(evento: any) {
     this.motos = []
     this.carros = []
+
     if (evento.target.value == 'carro') {
       this.service.readCarro().subscribe((carro: any) => {
         for (let i = 0; i < carro.length; i++) {
@@ -113,7 +114,11 @@ export class CriarVendasComponent implements OnInit {
       })
     } else if (evento.target.value == 'moto') {
       this.service.readMoto().subscribe((moto: any) => {
-        this.motos = moto;
+        for (let i = 0; i < moto.length; i++) {
+          if (moto[i].vendido != true) {
+            this.motos.push(moto[i])
+          }
+        }
       })
     }
   }
@@ -150,13 +155,23 @@ export class CriarVendasComponent implements OnInit {
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
       this.service.createVenda(this.venda).subscribe(() => {
+        this.identificarVeiculo(this.venda.id_carro, this.venda.id_moto);
         this.router.navigate(['/venda'])
-        this.carro.fotos = this.carro.id
-        this.carro.vendido = true
-        this.service.updateCarro(this.carro, this.carro.id).subscribe(() => {
-          console.log('ok')
-        });
       });
+    }
+  }
+
+  public identificarVeiculo(id_carro: any, id_moto: any): void {
+    if (id_carro != '') {
+      this.carro.fotos = this.carro.id
+      this.carro.vendido = true
+      this.service.updateCarro(this.carro, this.carro.id).subscribe(() => {
+      });
+    } else if (id_moto != '') {
+      this.moto.fotos = this.moto.id
+      this.moto.vendido = true
+      this.service.updateMoto(this.moto, this.moto.id).subscribe(() => {
+      })
     }
   }
 }

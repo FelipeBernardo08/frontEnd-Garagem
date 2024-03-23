@@ -13,10 +13,15 @@ export class VendasComponent implements OnInit {
   constructor(private service: ConectService, private router: Router) { }
 
   vendas: Array<any> = [];
+  valorTotal: number = 0;
 
   ngOnInit(): void {
     this.service.getVenda().subscribe((venda: any) => {
       this.vendas = venda;
+      for (let i = 0; i < venda.length; i++) {
+        this.valorTotal += venda[i].valor_total
+      }
+      console.log(this.valorTotal)
     })
   }
 

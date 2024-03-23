@@ -29,7 +29,7 @@
                             <td *ngIf="item.fotos.img1 != null ">
                                 <img src="{{img}}/{{item.fotos.img1}}" alt="" style="width: 50px;">
                             </td>
-                            <td *ngIf="item.fotos.img1 == null"> 
+                            <td *ngIf="item.fotos.img1 == null">
                                 Sem Fotos
                             </td>
                             <td>{{item.marca}}</td>
@@ -38,7 +38,8 @@
                             <td>{{item.ano_fabricacao}}</td>
                             <td>{{item.placa}}</td>
                             <td>R$ {{item.valor}},00</td>
-                            <td class="text-center"><i class="material-icons text-info button-edit" (click)="editar(item.id)">edit</i></td>
+                            <td class="text-center"><i class="material-icons text-info button-edit"
+                                    (click)="editar(item.id)">edit</i></td>
                         </tr>
                     </tbody>
                 </table>

@@ -11,6 +11,9 @@
             </strong>
         </h3>
 
+        <div *ngIf="vendas.length == 0">
+            <p>Nenhuma venda feita, clique <a routerLink="/venda/criar">aqui</a> para criar uma nova</p>
+        </div>
 
         <div *ngIf="vendas.length > 0" class="d-flex justify-content-center">
             <div class="card w-75">
@@ -43,7 +46,7 @@
                                     {{item.moto.modelo}} -
                                     {{item.moto.ano_fabricacao}}
                                 </td>
-                                <td>R$ {{item.valor_total}}</td>
+                                <td>R$ {{item.valor_total}},00</td>
                                 <td>{{item.created_at | date: 'dd/MM/yyyy'}}</td>
                                 <td>
                                     <i class="material-icons text-info button-visibility"
@@ -52,6 +55,11 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <h4>Valor total em vendas - R${{valorTotal}},00</h4>
+                    </div>
                 </div>
             </div>
         </div>

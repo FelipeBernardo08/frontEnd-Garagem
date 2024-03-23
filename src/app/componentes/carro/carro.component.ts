@@ -27,6 +27,8 @@ export class CarroComponent implements OnInit {
     this.img = this.service.urlImg
   }
 
+
+
   editar(id: number) {
     this.router.navigate([`/carro/editar/${id}`])
   }

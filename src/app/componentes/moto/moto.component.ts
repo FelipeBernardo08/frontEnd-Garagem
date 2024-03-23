@@ -17,15 +17,17 @@ export class MotoComponent implements OnInit {
   valorTotal: number = 0
   ngOnInit(): void {
     this.service.readMoto().subscribe(moto => {
-      this.moto = moto
-      for(let i = 0; i < this.moto.length; i++){
-        this.valorTotal += this.moto[i].valor
+      for (let i = 0; i < moto.length; i++) {
+        if (moto[i].vendido != true) {
+          this.moto.push(moto[i])
+          this.valorTotal += moto[i].valor
+        }
       }
     })
     this.img = this.service.urlImg
   }
 
-  editar(id:number){
+  editar(id: number) {
     this.router.navigate([`/moto/editar/${id}`])
   }
 
