@@ -34,11 +34,21 @@ export class ContratosComponent implements OnInit {
   `
   ngOnInit(): void {
     this.service.readContrato().subscribe((contratos: any) => {
-      this.contrato = contratos
-      this.contrato[0].corpo_contrato = this.contrato[0].corpo_contrato.replace('Nome do Comprador', this.cliente.nome)
+      this.contrato = contratos;
+      this.formatarTexto(this.contrato)
     })
   }
 
+  public formatarTexto(contrato: any): void {
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('nome_cliente', this.cliente.nome);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('cpf_cliente', this.cliente.cpf);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('rua_cliente', this.cliente.endereco.rua);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('numero_cliente', this.cliente.endereco.numero);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('bairro_cliente', this.cliente.endereco.bairro);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('cidade_cliente', this.cliente.endereco.cidade);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('estado_cliente', this.cliente.endereco.estado);
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace(/;/g, '<br>');
+  }
 
   public imprimir() {
     let conteudo: any = document.getElementById('contratoImprimir')?.innerHTML;
