@@ -1,19 +1,22 @@
-<section id="contratoImprimir">
-    <div style="text-align: center;">
-        <div *ngFor="let item of contrato" style="margin: 20px;">
+<div class="d-flex justify-content-end">
+    <button class="btn btn-sm btn-danger material-icons botao m-2 p-1" routerLink="/">reply</button>
+    <button class="btn btn-sm btn-success material-icons botao m-2 p-1" routerLink="/contratos/criar">add</button>
+</div>
 
-            <h3 style="font-weight: bold; color: rgb(0, 195, 255);">
-                {{item.titulo_contrato}}
-            </h3>
-
-            <div style="margin: 5px; font-size: 15px;" [innerHTML]="item.corpo_contrato.replace(';', '\n')">
-                <!-- {{item.corpo_contrato}} -->
+<section class="container">
+    <div class="row">
+        <div *ngFor="let item of contrato" class="col-md-4">
+            <div class="d-flex justify-content-center">
+                <div class="card w-100" id="contratoCard">
+                    <div class="card-header text-center">
+                        {{item.titulo_contrato}}
+                    </div>
+                    <div class="card-body" [innerHTML]="item.corpo_contrato"></div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-sm btn-success">Vincular Contrato</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-</section>
-
-<section class="d-flex justify-content-center">
-    <div class="btn btn-sm btn-success" (click)="imprimir()">Concluir</div>
 </section>

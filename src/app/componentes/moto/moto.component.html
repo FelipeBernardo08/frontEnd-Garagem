@@ -8,8 +8,12 @@
         <h3><strong>Motos Cadastradas</strong></h3>
     </div>
 
-    <div *ngIf="moto.length > 0" class="d-flex justify-content-center">
-        <div class="card w-75">
+    <div class="d-flex justify-content-center">
+        <div *ngIf="moto.length == 0">
+            <p>Nenhuma registro, clique <a routerLink="/moto/criar">aqui</a> para criar</p>
+        </div>
+
+        <div *ngIf="moto.length > 0" class="card w-75">
             <div class="card-body">
                 <table class="table striped-table">
                     <thead>

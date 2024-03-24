@@ -12,14 +12,11 @@
         </h3>
 
         <div *ngIf="vendas.length == 0">
-            <p>Nenhuma venda feita, clique <a routerLink="/venda/criar">aqui</a> para criar uma nova</p>
+            <p>Nenhuma registro, clique <a routerLink="/venda/criar">aqui</a> para criar</p>
         </div>
 
         <div *ngIf="vendas.length > 0" class="d-flex justify-content-center">
             <div class="card w-75">
-                <!-- <div class="card-header">
-                    Filtrar
-                </div> -->
                 <div class="card-body">
                     <table class="table striped-table">
                         <thead>

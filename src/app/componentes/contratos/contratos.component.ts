@@ -26,12 +26,6 @@ export class ContratosComponent implements OnInit {
 
   contrato: Contrato[] = []
 
-  contratoTitulo: string = `CONTRATO COMPRA E VENDA`
-
-  contratoCorpo: string = `
-  Comprador: ${this.cliente.nome}, portador do documento: ${this.cliente.cpf} residente do endereço: R. ${this.cliente.endereco.rua}, 
-  N. ${this.cliente.endereco.numero}, Bairro ${this.cliente.endereco.bairro}, Cidade: ${this.cliente.endereco.cidade}, Estado: ${this.cliente.endereco.estado}
-  `
   ngOnInit(): void {
     this.service.readContrato().subscribe((contratos: any) => {
       this.contrato = contratos;
@@ -40,14 +34,7 @@ export class ContratosComponent implements OnInit {
   }
 
   public formatarTexto(contrato: any): void {
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('nome_cliente', this.cliente.nome);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('cpf_cliente', this.cliente.cpf);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('rua_cliente', this.cliente.endereco.rua);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('numero_cliente', this.cliente.endereco.numero);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('bairro_cliente', this.cliente.endereco.bairro);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('cidade_cliente', this.cliente.endereco.cidade);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace('estado_cliente', this.cliente.endereco.estado);
-    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace(/;/g, '<br>');
+    contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace(/;/g, '<br><br>');
   }
 
   public imprimir() {

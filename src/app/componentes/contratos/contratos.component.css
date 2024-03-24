@@ -1,0 +1,28 @@
+.button-edit {
+    cursor: pointer;
+}
+
+.botao {
+    border-radius: 50px;
+}
+
+input,
+select,
+textarea,
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.351);
+}
+
+.card-body {
+    height: 600px;
+    overflow: auto;
+}
+
+.card-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.card-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #88888881;
+}
