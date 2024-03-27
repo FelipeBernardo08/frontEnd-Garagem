@@ -19,6 +19,8 @@ import { ContratosComponent } from './componentes/contratos/contratos.component'
 import { ContratosCriarComponent } from './componentes/contratos/contratos-criar/contratos-criar.component';
 import { ContratosEditarComponent } from './componentes/contratos/contratos-editar/contratos-editar.component';
 import { EditarVendasComponent } from './componentes/vendas/editar-vendas/editar-vendas.component';
+import { ContratosVincularComponent } from './componentes/contratos/contratos-vincular/contratos-vincular.component';
+import { ContratosImprimirComponent } from './componentes/contratos-imprimir/contratos-imprimir.component';
 
 const routes: Routes = [
   {
@@ -96,6 +98,14 @@ const routes: Routes = [
   {
     path: 'contratos/editar/:id',
     component: ContratosEditarComponent
+  },
+  {
+    path: 'contratos/vincular/:id',
+    component: ContratosVincularComponent
+  },
+  {
+    path: 'contratos/imprimir/:id',
+    component: ContratosImprimirComponent
   }
 ];
 

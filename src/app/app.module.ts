@@ -33,6 +33,8 @@ import { ContratosComponent } from './componentes/contratos/contratos.component'
 import { ContratosCriarComponent } from './componentes/contratos/contratos-criar/contratos-criar.component';
 import { ContratosEditarComponent } from './componentes/contratos/contratos-editar/contratos-editar.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ContratosVincularComponent } from './componentes/contratos/contratos-vincular/contratos-vincular.component';
+import { ContratosImprimirComponent } from './componentes/contratos-imprimir/contratos-imprimir.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     EditarDespesasComponent,
     ContratosComponent,
     ContratosCriarComponent,
-    ContratosEditarComponent
+    ContratosEditarComponent,
+    ContratosVincularComponent,
+    ContratosImprimirComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { Clientes } from '../interface/clientes';
 import { Vendas } from '../interface/vendas';
 import { Users } from '../interface/users';
 import { Contrato } from '../interface/contrato';
+import { ContratoVinculado } from '../interface/contrato-vinculado';
 
 @Injectable({
   providedIn: 'root'
@@ -134,5 +135,13 @@ export class ConectService {
 
   readContrato(): Observable<Contrato> {
     return this.http.get<Contrato>(`${this.baseUrl}/contrato`);
+  }
+
+  createContratoVinculado(contrato: any): Observable<ContratoVinculado> {
+    return this.http.post<ContratoVinculado>(`${this.baseUrl}/contratoVinculado`, contrato);
+  }
+
+  readContratoVinculado(id: any): Observable<ContratoVinculado> {
+    return this.http.get<ContratoVinculado>(`${this.baseUrl}/contratoVinculado/${id}`);
   }
 }

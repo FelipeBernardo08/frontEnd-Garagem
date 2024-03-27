@@ -1,0 +1,43 @@
+<section class="container mt-2 mb-2">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>
+                <strong>
+                    VINCULAR CONTRATO
+                </strong>
+            </h3>
+        </div>
+
+        <div class="card-body">
+            <form class="row form-floating needs-validation" id="formCliente">
+
+                <div class="col-md-6">
+                    <label for="" class="form-label mt-2">Vincular Por</label>
+                    <select name="" class="form-select mt-2" (change)="selecionarVinculo($event)" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="venda">Venda</option>
+                        <option value="personalizado">Personalizado</option>
+                    </select>
+                </div>
+
+                <div *ngIf="vendas.length > 0" class="col-md-6">
+                    <label for="" class="form-label mt-2">Vendas</label>
+                    <select name="" class="form-select mt-2" id="">
+                        <option value="" disabled selected>Selecione</option>
+                        <option *ngFor="let item of vendas" name="id_venda" [(ngModel)]="contratoVinculado.id_venda"
+                            value="{{item.id}}">
+                            Venda: {{item.id}} - Veículo:
+                            {{item.carro.marca}} {{item.carro.modelo}} - Cliente: {{item.cliente.nome}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-sm btn-success w-25" (click)="criarContrato()">
+                        Enviar e Imprimir
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

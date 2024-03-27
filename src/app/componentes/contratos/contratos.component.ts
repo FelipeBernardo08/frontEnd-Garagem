@@ -37,13 +37,4 @@ export class ContratosComponent implements OnInit {
     contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace(/;/g, '<br><br>');
   }
 
-  public imprimir() {
-    let conteudo: any = document.getElementById('contratoImprimir')?.innerHTML;
-    let imprimir = window.open('', '', 'heigth=700,width=800');
-    imprimir?.document.write('<html><head></head><body>');
-    imprimir?.document.write(conteudo);
-    imprimir?.document.write('</body></html>');
-    imprimir?.document.close();
-    imprimir?.print();
-  }
 }

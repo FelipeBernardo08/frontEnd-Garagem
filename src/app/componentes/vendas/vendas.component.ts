@@ -21,11 +21,8 @@ export class VendasComponent implements OnInit {
       for (let i = 0; i < venda.length; i++) {
         this.valorTotal += venda[i].valor_total
       }
-      console.log(this.valorTotal)
     })
-
     let conteudo = document.getElementById('listaVendas')?.innerHTML;
-    console.log(conteudo)
   }
 
   public visualizar(id: any): void {

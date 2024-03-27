@@ -20,7 +20,8 @@
                     </div>
                     <div class="card-body" [innerHTML]="item.corpo_contrato"></div>
                     <div class="card-footer text-center">
-                        <button class="btn btn-sm btn-success">Vincular Contrato</button>
+                        <button class="btn btn-sm btn-success" routerLink="/contratos/vincular/{{item.id}}">Vincular
+                            Contrato</button>
                     </div>
                 </div>
             </div>

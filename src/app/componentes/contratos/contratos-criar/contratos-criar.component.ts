@@ -43,7 +43,6 @@ export class ContratosCriarComponent implements OnInit {
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
       this.service.createContrato(this.contrato).subscribe(() => {
-        console.log('ok');
       })
     } else {
       //erro
