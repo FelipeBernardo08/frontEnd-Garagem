@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contrato } from 'src/app/interface/contrato';
 import { ConectService } from 'src/app/services/conect.service';
+import { ContratoService } from 'src/app/services/contrato.service';
 
 @Component({
   selector: 'app-contratos',
@@ -10,7 +11,10 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class ContratosComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private router: Router,
+    private contratoService: ContratoService
+  ) { }
 
   cliente = {
     nome: 'Felipe Bernardo de Oliveira',
@@ -27,7 +31,7 @@ export class ContratosComponent implements OnInit {
   contrato: Contrato[] = []
 
   ngOnInit(): void {
-    this.service.readContrato().subscribe((contratos: any) => {
+    this.contratoService.readContrato().subscribe((contratos: any) => {
       this.contrato = contratos;
       this.formatarTexto(this.contrato)
     })

@@ -1,3 +1,4 @@
+import { VendaService } from 'src/app/services/venda.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Carro } from 'src/app/interface/carro';
@@ -5,7 +6,11 @@ import { Clientes } from 'src/app/interface/clientes';
 import { Moto } from 'src/app/interface/moto';
 import { Users } from 'src/app/interface/users';
 import { Vendas } from 'src/app/interface/vendas';
+import { CarroService } from 'src/app/services/carro.service';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { ConectService } from 'src/app/services/conect.service';
+import { MotoService } from 'src/app/services/moto.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-criar-vendas',
@@ -79,7 +84,15 @@ export class CriarVendasComponent implements OnInit {
 
   user: Users[] = []
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private service: ConectService,
+    private router: Router,
+    private clienteService: ClienteService,
+    private userService: UserService,
+    private carroService: CarroService,
+    private motoService: MotoService,
+    private vendaService: VendaService
+  ) { }
 
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
@@ -91,11 +104,11 @@ export class CriarVendasComponent implements OnInit {
       }, false)
     });
 
-    this.service.readClientes().subscribe((cliente: any) => {
+    this.clienteService.readClientes().subscribe((cliente: any) => {
       this.clientes = cliente;
     });
 
-    this.service.readUsers().subscribe((users: any) => {
+    this.userService.readUsers().subscribe((users: any) => {
       this.user = users
     })
   }
@@ -105,7 +118,7 @@ export class CriarVendasComponent implements OnInit {
     this.carros = []
 
     if (evento.target.value == 'carro') {
-      this.service.readCarro().subscribe((carro: any) => {
+      this.carroService.readCarro().subscribe((carro: any) => {
         for (let i = 0; i < carro.length; i++) {
           if (carro[i].vendido != true) {
             this.carros.push(carro[i])
@@ -113,7 +126,7 @@ export class CriarVendasComponent implements OnInit {
         }
       })
     } else if (evento.target.value == 'moto') {
-      this.service.readMoto().subscribe((moto: any) => {
+      this.motoService.readMoto().subscribe((moto: any) => {
         for (let i = 0; i < moto.length; i++) {
           if (moto[i].vendido != true) {
             this.motos.push(moto[i])
@@ -154,7 +167,7 @@ export class CriarVendasComponent implements OnInit {
     let form = document.getElementById('formVenda');
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
-      this.service.createVenda(this.venda).subscribe(() => {
+      this.vendaService.createVenda(this.venda).subscribe(() => {
         this.identificarVeiculo(this.venda.id_carro, this.venda.id_moto);
         this.router.navigate(['/venda'])
       });
@@ -165,12 +178,12 @@ export class CriarVendasComponent implements OnInit {
     if (id_carro != '') {
       this.carro.fotos = this.carro.id
       this.carro.vendido = true
-      this.service.updateCarro(this.carro, this.carro.id).subscribe(() => {
+      this.carroService.updateCarro(this.carro, this.carro.id).subscribe(() => {
       });
     } else if (id_moto != '') {
       this.moto.fotos = this.moto.id
       this.moto.vendido = true
-      this.service.updateMoto(this.moto, this.moto.id).subscribe(() => {
+      this.motoService.updateMoto(this.moto, this.moto.id).subscribe(() => {
       })
     }
   }

@@ -3,7 +3,11 @@ import { Router } from '@angular/router';
 import { Contrato } from 'src/app/interface/contrato';
 import { ContratoVinculado } from 'src/app/interface/contrato-vinculado';
 import { Vendas } from 'src/app/interface/vendas';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { ConectService } from 'src/app/services/conect.service';
+import { ContratoVinculadoService } from 'src/app/services/contrato-vinculado.service';
+import { ContratoService } from 'src/app/services/contrato.service';
+import { VendaService } from 'src/app/services/venda.service';
 
 @Component({
   selector: 'app-contratos-vincular',
@@ -12,7 +16,13 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class ContratosVincularComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private service: ConectService,
+    private router: Router,
+    private clienteService: ClienteService,
+    private vendaService: VendaService,
+    private contratoVinculadoService: ContratoVinculadoService
+  ) { }
 
   contratos: Contrato[] = [];
   vendas: Array<any> = [];
@@ -40,16 +50,16 @@ export class ContratosVincularComponent implements OnInit {
   public selecionarVinculo(e: any): void {
     let index = e.target.value
     if (index == 'venda') {
-      this.service.getVenda().subscribe((venda: any) => {
+      this.vendaService.getVenda().subscribe((venda: any) => {
         this.vendas = venda;
-        console.log(venda)
+        console.log(venda);
       })
     } else if (index == 'personalizado') {
     }
   }
 
   public criarContrato(): void {
-    this.service.createContratoVinculado(this.contratoVinculado).subscribe((contrato: any) => {
+    this.contratoVinculadoService.createContratoVinculado(this.contratoVinculado).subscribe((contrato: any) => {
       this.router.navigate([`contratos/imprimir/${contrato.id}`])
     });
   }

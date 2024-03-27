@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConectService } from 'src/app/services/conect.service';
+import { VendaService } from 'src/app/services/venda.service';
 
 @Component({
   selector: 'app-editar-vendas',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarVendasComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private vendaService: VendaService) { }
+
+  vendas: any;
 
   ngOnInit(): void {
+    this.vendaService.getVendaId(this.recuperarIdUrl()).subscribe((venda: any) => {
+      this.vendas = venda;
+    });
   }
 
+  recuperarIdUrl() {
+    let href = window.location.href
+    let id = href.charAt(href.length - 1);
+    return id
+  }
 }

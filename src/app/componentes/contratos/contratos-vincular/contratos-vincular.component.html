@@ -25,8 +25,14 @@
                     <select name="id_venda" class="form-select mt-2" id="" [(ngModel)]="contratoVinculado.id_venda">
                         <option value="" disabled selected>Selecione</option>
                         <option *ngFor="let item of vendas" value="{{item.id}}">
-                            Venda: {{item.id}} - Veículo:
-                            {{item.moto.marca}} {{item.moto.modelo}} - Cliente: {{item.cliente.nome}}
+                            <p *ngIf="item.id_moto != null">
+                                Venda: {{item.id}} - Veículo:
+                                {{item.moto.marca}} {{item.moto.modelo}} - Cliente: {{item.cliente.nome}}
+                            </p>
+                            <p *ngIf="item.id_carro != null">
+                                Venda: {{item.id}} - Veículo:
+                                {{item.carro.marca}} {{item.carro.modelo}} - Cliente: {{item.cliente.nome}}
+                            </p>
                         </option>
                     </select>
                 </div>

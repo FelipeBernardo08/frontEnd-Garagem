@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContratoVinculado } from 'src/app/interface/contrato-vinculado';
 import { ConectService } from 'src/app/services/conect.service';
+import { ContratoVinculadoService } from 'src/app/services/contrato-vinculado.service';
 
 @Component({
   selector: 'app-contratos-imprimir',
@@ -10,12 +11,15 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class ContratosImprimirComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private router: Router,
+    private contratoVinculadoService: ContratoVinculadoService
+  ) { }
 
   contratos: any;
 
   ngOnInit(): void {
-    this.service.readContratoVinculado(this.recuperarIdUrl()).subscribe((contrato: any) => {
+    this.contratoVinculadoService.readContratoVinculado(this.recuperarIdUrl()).subscribe((contrato: any) => {
       this.contratos = contrato;
       this.formatarTexto(contrato)
       console.log(this.contratos)

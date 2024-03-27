@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Carro } from 'src/app/interface/carro';
+import { CarroService } from 'src/app/services/carro.service';
 import { ConectService } from 'src/app/services/conect.service';
+import { ImgCarroService } from 'src/app/services/img-carro.service';
 import { RequisitosFormularioCarroService } from 'src/app/services/requisitos-formulario-carro.service';
 
 interface ImagensCarro {
-  id:any,
+  id: any,
   url: SafeUrl,
   caminho: any
 }
@@ -17,7 +19,13 @@ interface ImagensCarro {
 })
 export class EditarCarroComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router, private sanitizer: DomSanitizer, private serviceForm: RequisitosFormularioCarroService) { }
+  constructor(
+    private service: ConectService,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private serviceForm: RequisitosFormularioCarroService,
+    private serviceImg: ImgCarroService,
+    private serviceCarro: CarroService) { }
 
   listaMarcas = this.serviceForm.listaMarcas
   potenciaMotor = this.serviceForm.potenciaMotor
@@ -29,70 +37,70 @@ export class EditarCarroComponent implements OnInit {
 
   public carro: Carro = {
     marca: '',
-    modelo:'',
-    potencia_motor:'',
-    valvulas_motor:'',
-    combustivel:'',
-    cambio:'',
-    km_atual:'',
-    ano_fabricacao:'',
-    final_placa:'',
-    cor:'',
-    categoria:'',
-    descricao:'',
+    modelo: '',
+    potencia_motor: '',
+    valvulas_motor: '',
+    combustivel: '',
+    cambio: '',
+    km_atual: '',
+    ano_fabricacao: '',
+    final_placa: '',
+    cor: '',
+    categoria: '',
+    descricao: '',
     portas: '',
 
-    ar_condicionado:false,
-    ar_quente:false,
-    air_bag_dianteiro:false,
-    air_bag_traseiro:false,
-    vidro_eletrico_dianteiro:false,
-    vidro_eletrico_traseiro:false,
-    multimidea:false,
-    camera_re:false,
-    alarme:false,
-    travas_eletricas:false,
-    computador_bordo:false,
-    regulagem_banco:false,
-    regulagem_volante:false,
+    ar_condicionado: false,
+    ar_quente: false,
+    air_bag_dianteiro: false,
+    air_bag_traseiro: false,
+    vidro_eletrico_dianteiro: false,
+    vidro_eletrico_traseiro: false,
+    multimidea: false,
+    camera_re: false,
+    alarme: false,
+    travas_eletricas: false,
+    computador_bordo: false,
+    regulagem_banco: false,
+    regulagem_volante: false,
 
-    placa:'',
-    ipva_pago:false,
-    ipva_valor:undefined,
-    fipe:undefined,
-    valor_pago:undefined,
-    porcentagem_maxima:undefined,
-    valor:undefined,
-    vendido:false,
+    placa: '',
+    ipva_pago: false,
+    ipva_valor: undefined,
+    fipe: undefined,
+    valor_pago: undefined,
+    porcentagem_maxima: undefined,
+    valor: undefined,
+    vendido: false,
   };
 
   imagemCaminho: any
   imagemSelecionada: any;
   img: Array<any> = []
   urlImagemSelecionada: SafeUrl = ''
-  formData:any;
+  formData: any;
   imagem: Array<any> = []
   condicaoImagem: Array<boolean> = []
   condicaoBotao: boolean = true
 
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach((form:any) => {
-      form.addEventListener('submit', (event:any) => {
-        if(form.classList == 'ng-valid'){
+    Array.from(forms).forEach((form: any) => {
+      form.addEventListener('submit', (event: any) => {
+        if (form.classList == 'ng-valid') {
         }
         form.classList.add('was-validated')
       }, false)
     })
-    
+
     this.imagemCaminho = this.service.urlImg
-    this.service.readCarroId(this.recuperarIdUrl()).subscribe(carros => {
+    this.serviceCarro.readCarroId(this.service.recuperarIdUrl()).subscribe(carros => {
       this.carro = carros
       this.atribuirImg(this.carro.fotos)
     })
   }
 
-  atribuirImg(img:any){
+  atribuirImg(img: any) {
     this.imagem[0] = img.img1
     this.imagem[1] = img.img2
     this.imagem[2] = img.img3
@@ -102,85 +110,79 @@ export class EditarCarroComponent implements OnInit {
     this.imagem[6] = img.img7
     this.imagem[7] = img.img8
 
-    for(let i =0 ; i < this.imagem.length; i++){
-      if(this.imagem[i] != null){
+    for (let i = 0; i < this.imagem.length; i++) {
+      if (this.imagem[i] != null) {
         this.condicaoImagem[i] = true
         this.condicaoBotao = false
       }
     }
   }
 
-  recuperarIdUrl(){
-    let href = window.location.href
-    let id = href.charAt(href.length -1);
-    return id
-  }
-
-  atualizar(){
+  atualizar() {
     let form = document.getElementById('formCarro')
     let valid = form?.classList.contains('ng-valid')
-    if(valid){
+    if (valid) {
       this.criarImagem()
-      this.service.updateImg(this.formData,this.recuperarIdUrl()).subscribe(imagem => {
-        this.carro.fotos = this.recuperarIdUrl()
-        this.service.updateCarro(this.carro, this.recuperarIdUrl()).subscribe(()=>{
+      this.serviceImg.updateImg(this.formData, this.service.recuperarIdUrl()).subscribe(imagem => {
+        this.carro.fotos = this.service.recuperarIdUrl();
+        this.serviceCarro.updateCarro(this.carro, this.service.recuperarIdUrl()).subscribe(() => {
           this.router.navigate(['/carro'])
         })
       })
-    }else{
+    } else {
 
     }
   }
 
-  desativar(){
-    this.service.deleteCarro(this.recuperarIdUrl()).subscribe(() => {
-      this.service.deleteImg(this.recuperarIdUrl()).subscribe(() => {
+  desativar() {
+    this.serviceCarro.deleteCarro(this.service.recuperarIdUrl()).subscribe(() => {
+      this.serviceImg.deleteImg(this.service.recuperarIdUrl()).subscribe(() => {
         this.router.navigate(['/carro'])
       })
     });
   }
 
-  selecionarImagem(event: any, id:number) {
+  selecionarImagem(event: any, id: number) {
     this.imagemSelecionada = event.target.files;
-    
+
     const imagem: ImagensCarro = {
       id: id,
       url: this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.imagemSelecionada[0])),
       caminho: this.imagemSelecionada[0]
     };
-    
+
     this.adicionarAoArray(imagem)
   }
 
-  adicionarAoArray(imagem:any){
+  adicionarAoArray(imagem: any) {
     this.img[imagem.id] = imagem
   }
-  
-  criarImagem(){
+
+  criarImagem() {
     this.formData = new FormData();
     for (let i = 0; i < this.img.length; i++) {
-      if(this.img[i] != null){
-        this.formData.append(`img${i+1}`, this.img[i].caminho);
+      if (this.img[i] != null) {
+        this.formData.append(`img${i + 1}`, this.img[i].caminho);
       }
     }
   }
 
-  apagarImg(id:any){
+  apagarImg(id: any) {
     this.condicaoImagem[id] = true
     this.img.splice(id, 1);
-  } 
+  }
 
-  alterarImagem(id:any){
+  alterarImagem(id: any) {
     this.condicaoImagem[id] = false
   }
 
-  apagarTodasImagens(){
+  apagarTodasImagens() {
     this.formData = new FormData();
-    for(let i = 0; i < this.imagem.length; i++){
+    for (let i = 0; i < this.imagem.length; i++) {
       this.img[i] = null
-      this.formData.append(`img${i+1}`, this.img[i]);
+      this.formData.append(`img${i + 1}`, this.img[i]);
     }
-    this.service.apagarTodasImagens(this.formData, this.recuperarIdUrl()).subscribe(() => {
+    this.serviceImg.apagarTodasImagens(this.formData, this.service.recuperarIdUrl()).subscribe(() => {
       window.location.reload()
     });
   }

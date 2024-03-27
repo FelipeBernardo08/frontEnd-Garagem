@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clientes } from 'src/app/interface/clientes';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { ConectService } from 'src/app/services/conect.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class EditarClienteComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private router: Router,
+    private clienteService: ClienteService
+  ) { }
 
   public cliente: Clientes = {
     nome: '',
@@ -35,7 +39,7 @@ export class EditarClienteComponent implements OnInit {
       }, false)
     })
 
-    this.service.readClientesId(this.recuperarIdUrl()).subscribe(clientes => [
+    this.clienteService.readClientesId(this.recuperarIdUrl()).subscribe(clientes => [
       this.cliente = clientes
     ])
   }
@@ -50,7 +54,7 @@ export class EditarClienteComponent implements OnInit {
     let form = document.getElementById('formCliente')
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
-      this.service.updateCliente(this.recuperarIdUrl(), this.cliente).subscribe(() => {
+      this.clienteService.updateCliente(this.recuperarIdUrl(), this.cliente).subscribe(() => {
         this.retornarListagem();
       })
     } else {
@@ -63,7 +67,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   desativar() {
-    this.service.deleteCliente(this.recuperarIdUrl()).subscribe(() => {
+    this.clienteService.deleteCliente(this.recuperarIdUrl()).subscribe(() => {
       this.retornarListagem();
 
     })

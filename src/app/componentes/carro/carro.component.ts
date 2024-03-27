@@ -1,3 +1,4 @@
+import { CarroService } from './../../services/carro.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Carro } from 'src/app/interface/carro';
@@ -13,10 +14,14 @@ export class CarroComponent implements OnInit {
   carro: Carro[] = []
   img: string = ''
   valorTotal: number = 0
-  constructor(public service: ConectService, public router: Router) { }
+  constructor(
+    public service: ConectService,
+    public router: Router,
+    public carroService: CarroService
+  ) { }
 
   ngOnInit(): void {
-    this.service.readCarro().subscribe(carros => {
+    this.carroService.readCarro().subscribe(carros => {
       for (let i = 0; i < carros.length; i++) {
         if (carros[i].vendido != true) {
           this.carro.push(carros[i])

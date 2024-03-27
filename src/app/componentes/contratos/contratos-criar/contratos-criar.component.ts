@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contrato } from 'src/app/interface/contrato';
 import { ConectService } from 'src/app/services/conect.service';
+import { ContratoService } from 'src/app/services/contrato.service';
 
 @Component({
   selector: 'app-contratos-criar',
@@ -10,7 +11,10 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class ContratosCriarComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private router: Router,
+    private contratoService: ContratoService
+  ) { }
 
   contrato: Contrato = {
     titulo_contrato: '',
@@ -42,7 +46,7 @@ export class ContratosCriarComponent implements OnInit {
     let form = document.getElementById('formContrato')
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
-      this.service.createContrato(this.contrato).subscribe(() => {
+      this.contratoService.createContrato(this.contrato).subscribe(() => {
       })
     } else {
       //erro

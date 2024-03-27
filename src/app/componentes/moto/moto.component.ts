@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Moto } from 'src/app/interface/moto';
 import { ConectService } from 'src/app/services/conect.service';
+import { MotoService } from 'src/app/services/moto.service';
 
 @Component({
   selector: 'app-moto',
@@ -10,13 +11,17 @@ import { ConectService } from 'src/app/services/conect.service';
 })
 export class MotoComponent implements OnInit {
 
-  constructor(private service: ConectService, private router: Router) { }
+  constructor(
+    private service: ConectService,
+    private router: Router,
+    private motoService: MotoService
+  ) { }
 
   moto: Moto[] = []
   img: any
   valorTotal: number = 0
   ngOnInit(): void {
-    this.service.readMoto().subscribe(moto => {
+    this.motoService.readMoto().subscribe(moto => {
       for (let i = 0; i < moto.length; i++) {
         if (moto[i].vendido != true) {
           this.moto.push(moto[i])
