@@ -17,6 +17,7 @@ export class ContratosImprimirComponent implements OnInit {
   ngOnInit(): void {
     this.service.readContratoVinculado(this.recuperarIdUrl()).subscribe((contrato: any) => {
       this.contratos = contrato;
+      this.formatarTexto(contrato)
       console.log(this.contratos)
     })
   }
@@ -35,6 +36,10 @@ export class ContratosImprimirComponent implements OnInit {
     imprimir?.document.write('</body></html>');
     imprimir?.document.close();
     imprimir?.print();
+  }
+
+  public formatarTexto(contrato: any): void {
+    contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace(/;/g, '<br><br>');
   }
 
 }

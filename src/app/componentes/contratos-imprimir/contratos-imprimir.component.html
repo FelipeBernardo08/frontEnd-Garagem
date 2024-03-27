@@ -1,3 +1,27 @@
-<section style="text-align: center; margin-top: 50px;">
+<section id="contratoImprimir">
+    <div style="text-align: center; margin: 1%;">
+        <h3>
+            <strong>
+                {{contratos.contrato.titulo_contrato}}
+            </strong>
+        </h3>
+        <p [innerHTML]="contratos.contrato.corpo_contrato"></p>
 
+        <p>_______________________________________________________</p>
+        <p>Testemunha 1</p>
+
+        <br>
+
+        <p>_______________________________________________________</p>
+        <p>Testemunha 2</p>
+
+        <br>
+
+        <p>_______________________________________________________</p>
+        <p>Comprador</p>
+    </div>
 </section>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-sm btn-success w-25" (click)="imprimir()">Imprimir</button>
+</div>
