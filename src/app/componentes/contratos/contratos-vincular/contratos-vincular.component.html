@@ -22,12 +22,11 @@
 
                 <div *ngIf="vendas.length > 0" class="col-md-6">
                     <label for="" class="form-label mt-2">Vendas</label>
-                    <select name="" class="form-select mt-2" id="">
+                    <select name="id_venda" class="form-select mt-2" id="" [(ngModel)]="contratoVinculado.id_venda">
                         <option value="" disabled selected>Selecione</option>
-                        <option *ngFor="let item of vendas" name="id_venda" [(ngModel)]="contratoVinculado.id_venda"
-                            value="{{item.id}}">
+                        <option *ngFor="let item of vendas" value="{{item.id}}">
                             Venda: {{item.id}} - Veículo:
-                            {{item.carro.marca}} {{item.carro.modelo}} - Cliente: {{item.cliente.nome}}
+                            {{item.moto.marca}} {{item.moto.modelo}} - Cliente: {{item.cliente.nome}}
                         </option>
                     </select>
                 </div>
