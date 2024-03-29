@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContratoVinculado } from 'src/app/interface/contrato-vinculado';
 import { ConectService } from 'src/app/services/conect.service';
 import { ContratoVinculadoService } from 'src/app/services/contrato-vinculado.service';
 
@@ -13,23 +12,18 @@ export class ContratosImprimirComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private contratoVinculadoService: ContratoVinculadoService
+    private contratoVinculadoService: ContratoVinculadoService,
+    private service: ConectService
   ) { }
 
   contratos: any;
 
   ngOnInit(): void {
-    this.contratoVinculadoService.readContratoVinculado(this.recuperarIdUrl()).subscribe((contrato: any) => {
+    this.contratoVinculadoService.readContratoVinculado(this.service.recuperarIdUrl()).subscribe((contrato: any) => {
       this.contratos = contrato;
       this.formatarTexto(contrato)
       console.log(this.contratos)
     })
-  }
-
-  public recuperarIdUrl(): string {
-    let href = window.location.href
-    let id = href.charAt(href.length - 1);
-    return id
   }
 
   public imprimir(): void {

@@ -12,19 +12,16 @@ export class EditarVendasComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private vendaService: VendaService) { }
+    private vendaService: VendaService,
+    private service: ConectService
+  ) { }
 
   vendas: any;
 
   ngOnInit(): void {
-    this.vendaService.getVendaId(this.recuperarIdUrl()).subscribe((venda: any) => {
+    this.vendaService.getVendaId(this.service.recuperarIdUrl()).subscribe((venda: any) => {
       this.vendas = venda;
     });
   }
 
-  recuperarIdUrl() {
-    let href = window.location.href
-    let id = href.charAt(href.length - 1);
-    return id
-  }
 }

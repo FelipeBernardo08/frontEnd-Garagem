@@ -13,7 +13,8 @@ export class EditarClienteComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private service: ConectService
   ) { }
 
   public cliente: Clientes = {
@@ -39,22 +40,17 @@ export class EditarClienteComponent implements OnInit {
       }, false)
     })
 
-    this.clienteService.readClientesId(this.recuperarIdUrl()).subscribe(clientes => [
+    this.clienteService.readClientesId(this.service.recuperarIdUrl()).subscribe(clientes => [
       this.cliente = clientes
     ])
   }
 
-  recuperarIdUrl() {
-    let href = window.location.href
-    let id = href.charAt(href.length - 1);
-    return id
-  }
 
   atualizar() {
     let form = document.getElementById('formCliente')
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
-      this.clienteService.updateCliente(this.recuperarIdUrl(), this.cliente).subscribe(() => {
+      this.clienteService.updateCliente(this.service.recuperarIdUrl(), this.cliente).subscribe(() => {
         this.retornarListagem();
       })
     } else {
@@ -67,7 +63,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   desativar() {
-    this.clienteService.deleteCliente(this.recuperarIdUrl()).subscribe(() => {
+    this.clienteService.deleteCliente(this.service.recuperarIdUrl()).subscribe(() => {
       this.retornarListagem();
 
     })

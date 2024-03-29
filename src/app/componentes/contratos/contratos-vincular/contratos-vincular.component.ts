@@ -28,7 +28,7 @@ export class ContratosVincularComponent implements OnInit {
   vendas: Array<any> = [];
 
   contratoVinculado: ContratoVinculado = {
-    id_contrato: this.recuperarIdUrl(),
+    id_contrato: this.service.recuperarIdUrl(),
     id_carro: null,
     id_cliente: null,
     id_venda: null,
@@ -64,11 +64,6 @@ export class ContratosVincularComponent implements OnInit {
     });
   }
 
-  public recuperarIdUrl(): string {
-    let href = window.location.href
-    let id = href.charAt(href.length - 1);
-    return id
-  }
 
   public imprimir(): void {
     let conteudo: any = document.getElementById('contratoImprimir')?.innerHTML;

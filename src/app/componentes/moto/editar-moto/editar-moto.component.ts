@@ -28,6 +28,7 @@ export class EditarMotoComponent implements OnInit {
     private motoService: MotoService,
     private motoImg: ImgMotoService
   ) { }
+
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach((form: any) => {
@@ -39,7 +40,7 @@ export class EditarMotoComponent implements OnInit {
     })
 
     this.imagemCaminho = this.service.urlImg
-    this.motoService.readMotoId(this.recuperarIdUrl()).subscribe(motos => {
+    this.motoService.readMotoId(this.service.recuperarIdUrl()).subscribe(motos => {
       this.moto = motos
       this.atribuirImg(this.moto.fotos)
     })
@@ -111,20 +112,15 @@ export class EditarMotoComponent implements OnInit {
     }
   }
 
-  recuperarIdUrl() {
-    let href = window.location.href
-    let id = href.charAt(href.length - 1);
-    return id
-  }
 
   atualizar() {
     let form = document.getElementById('formMoto')
     let valid = form?.classList.contains('ng-valid')
     if (valid) {
       this.criarImagem()
-      this.motoImg.updateImgMoto(this.formData, this.recuperarIdUrl()).subscribe(imagem => {
-        this.moto.fotos = this.recuperarIdUrl()
-        this.motoService.updateMoto(this.moto, this.recuperarIdUrl()).subscribe(() => {
+      this.motoImg.updateImgMoto(this.formData, this.service.recuperarIdUrl()).subscribe(imagem => {
+        this.moto.fotos = this.service.recuperarIdUrl()
+        this.motoService.updateMoto(this.moto, this.service.recuperarIdUrl()).subscribe(() => {
           this.router.navigate(['/moto'])
         })
       })
@@ -133,8 +129,8 @@ export class EditarMotoComponent implements OnInit {
   }
 
   desativar() {
-    this.motoService.deleteMoto(this.recuperarIdUrl()).subscribe(() => {
-      this.motoImg.deleteImgMoto(this.recuperarIdUrl()).subscribe(() => {
+    this.motoService.deleteMoto(this.service.recuperarIdUrl()).subscribe(() => {
+      this.motoImg.deleteImgMoto(this.service.recuperarIdUrl()).subscribe(() => {
         this.router.navigate(['/moto'])
       })
     });
@@ -180,7 +176,7 @@ export class EditarMotoComponent implements OnInit {
       this.img[i] = null
       this.formData.append(`img${i + 1}`, this.img[i]);
     }
-    this.service.apagarTodasImagensMoto(this.formData, this.recuperarIdUrl()).subscribe(() => {
+    this.service.apagarTodasImagensMoto(this.formData, this.service.recuperarIdUrl()).subscribe(() => {
       window.location.reload()
     });
   }
