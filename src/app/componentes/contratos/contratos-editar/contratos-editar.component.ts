@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContratoVinculadoService } from 'src/app/services/contrato-vinculado.service';
 
 @Component({
   selector: 'app-contratos-editar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContratosEditarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private contratoVinculado: ContratoVinculadoService
+  ) { }
+
+  contratos: Array<any> = []
 
   ngOnInit(): void {
+    this.contratoVinculado.getAllContratosVinculados().subscribe((contrato: any) => {
+      this.contratos = contrato;
+      console.log(contrato);
+    })
   }
 
 }

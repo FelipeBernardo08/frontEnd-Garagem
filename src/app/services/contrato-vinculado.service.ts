@@ -15,6 +15,10 @@ export class ContratoVinculadoService {
     return this.http.post<ContratoVinculado>(`${this.baseUrl}/contratoVinculado`, contrato);
   }
 
+  getAllContratosVinculados(): Observable<ContratoVinculado> {
+    return this.http.get<ContratoVinculado>(`${this.baseUrl}/contratoVinculado`);
+  }
+
   readContratoVinculado(id: any): Observable<ContratoVinculado> {
     return this.http.get<ContratoVinculado>(`${this.baseUrl}/contratoVinculado/${id}`);
   }

@@ -96,7 +96,7 @@ const routes: Routes = [
     component: ContratosCriarComponent
   },
   {
-    path: 'contratos/editar/:id',
+    path: 'contratos/editar',
     component: ContratosEditarComponent
   },
   {

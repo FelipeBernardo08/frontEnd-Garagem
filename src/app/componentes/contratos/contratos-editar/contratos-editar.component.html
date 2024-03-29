@@ -1,1 +1,61 @@
-<p>contratos-editar works!</p>
+<section class="mt-5">
+    <div class="text-center">
+        <h3>
+            <strong>
+                Contratos
+            </strong>
+        </h3>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="card w-75">
+            <div class="card-header text-center">
+                Lista de contratos vinculados
+            </div>
+            <div class="card-boy">
+                <table class="table striped-table">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Nome Contrato</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Veiculo</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Visualizar e Imprimir</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr *ngFor="let item of contratos">
+                            <td>
+                                {{item.id}}
+                            </td>
+                            <td>
+                                {{item.contrato.titulo_contrato}}
+                            </td>
+                            <td *ngIf="item.venda.cliente != null">
+                                {{item.venda.cliente.nome}}
+                            </td>
+                            <td *ngIf="item.venda.cliente == null">
+                                Desativado
+                            </td>
+                            <td *ngIf="item.venda.carro != null">
+                                {{item.venda.carro.marca}} - {{item.venda.carro.modelo}} -
+                                {{item.venda.carro.potencia_motor}}
+                            </td>
+                            <td *ngIf="item.venda.moto != null">
+                                {{item.venda.moto.marca}} - {{item.venda.moto.modelo}} -
+                                {{item.venda.moto.potencia_motor}}
+                            </td>
+                            <td>
+                                R${{item.venda.valor_total}},00
+                            </td>
+                            <td routerLink="/contratos/imprimir/{{item.id}}">
+                                <i class="material-icons text-info button-edit">visibility</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
