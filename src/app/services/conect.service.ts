@@ -27,7 +27,11 @@ export class ConectService {
 
   recuperarIdUrl(): string {
     let href = window.location.href
-    let id = href.charAt(href.length - 1);
+    // let id = href.charAt(href.length - 1);
+    let partes = href.split('/');
+
+    let id = partes[partes.length - 1];
+
     return id
   }
 }
