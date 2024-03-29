@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConectService } from 'src/app/services/conect.service';
 import { ContratoVinculadoService } from 'src/app/services/contrato-vinculado.service';
+import { FormatarTextoService } from 'src/app/services/formatar-texto.service';
 
 @Component({
   selector: 'app-contratos-imprimir',
@@ -13,6 +14,7 @@ export class ContratosImprimirComponent implements OnInit {
   constructor(
     private router: Router,
     private contratoVinculadoService: ContratoVinculadoService,
+    private formatarService: FormatarTextoService,
     private service: ConectService
   ) { }
 
@@ -21,9 +23,15 @@ export class ContratosImprimirComponent implements OnInit {
   ngOnInit(): void {
     this.contratoVinculadoService.readContratoVinculado(this.service.recuperarIdUrl()).subscribe((contrato: any) => {
       this.contratos = contrato;
-      this.formatarTexto(contrato)
+      this.verificarModeloContrato(contrato);
       console.log(this.contratos)
     })
+  }
+
+  public verificarModeloContrato(contrato: any): void {
+    if (contrato.id_venda != null) {
+      this.formatarService.formatarTexto(contrato)
+    } //restante dos outros modelos de contrato
   }
 
   public imprimir(): void {
@@ -36,8 +44,5 @@ export class ContratosImprimirComponent implements OnInit {
     imprimir?.print();
   }
 
-  public formatarTexto(contrato: any): void {
-    contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace(/;/g, '<br><br>');
-  }
 
 }
