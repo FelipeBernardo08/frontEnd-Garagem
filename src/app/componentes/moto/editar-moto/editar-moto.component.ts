@@ -67,6 +67,7 @@ export class EditarMotoComponent implements OnInit {
     partida_eletrica: false,
 
     placa: '',
+    chassis: '',
     ipva_pago: false,
     ipva_valor: undefined,
     fipe: undefined,

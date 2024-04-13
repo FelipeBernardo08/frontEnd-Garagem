@@ -65,6 +65,7 @@ export class EditarCarroComponent implements OnInit {
     regulagem_volante: false,
 
     placa: '',
+    chassis: '',
     ipva_pago: false,
     ipva_valor: undefined,
     fipe: undefined,

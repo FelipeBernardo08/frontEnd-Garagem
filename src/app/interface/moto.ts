@@ -19,6 +19,7 @@ export interface Moto {
     partida_eletrica?: boolean,
 
     placa: string,
+    chassis?: string,
     ipva_pago: boolean,
     ipva_valor: any,
     fipe: any,

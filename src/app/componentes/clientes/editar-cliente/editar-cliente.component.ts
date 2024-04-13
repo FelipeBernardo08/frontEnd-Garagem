@@ -26,7 +26,8 @@ export class EditarClienteComponent implements OnInit {
     end_numero: '',
     end_bairro: '',
     end_cidade: '',
-    end_estado: ''
+    end_estado: '',
+    end_cep: ''
   }
 
 

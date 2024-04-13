@@ -80,20 +80,26 @@
                         placeholder="Digite o KM..." required>
                 </div>
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <label for="placa" class="form-label">Placa</label>
                     <input type="text" name="placa" [(ngModel)]="moto.placa" class="form-control"
                         placeholder="Digite a placa..." required>
                 </div>
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
+                    <label for="chassis" class="form-label">Chassis</label>
+                    <input type="text" name="chassis" [(ngModel)]="moto.chassis" class="form-control"
+                        placeholder="Digite o chassis..." required>
+                </div>
+
+                <div class="col-md-3 mt-1">
                     <label for="valor_pago" class="form-label">Valor Pago</label>
                     <input type="text" class="form-control" name="valor_pago" [(ngModel)]="moto.valor_pago"
                         placeholder="R$" required>
                 </div>
 
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <label for="ipva_valor" class="form-label">Valor IPVA</label>
                     <input type="text" class="form-control" name="ipva_valor" [(ngModel)]="moto.ipva_valor"
                         placeholder="R$" required>
