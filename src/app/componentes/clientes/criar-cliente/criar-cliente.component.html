@@ -52,10 +52,16 @@
                         placeholder="Digite o bairro..." [(ngModel)]="cliente.end_bairro" required>
                 </div>
 
-                <div class="col-md-8 mt-2">
+                <div class="col-md-6 mt-2">
                     <label for="cidade" class="form-label">Cidade</label>
                     <input type="text" name="end_cidade" class="form-control" id="cidade"
                         placeholder="Digite a cidade..." [(ngModel)]="cliente.end_cidade" required>
+                </div>
+
+                <div class="col-md-2 mt-2">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" name="end_cep" class="form-control" id="cep" placeholder="Digite o cep..."
+                        [(ngModel)]="cliente.end_cep" required>
                 </div>
 
                 <div class="col-md-4 mt-2">

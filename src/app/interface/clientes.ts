@@ -8,5 +8,6 @@ export interface Clientes {
     end_numero: string,
     end_bairro: string,
     end_cidade: string,
-    end_estado: string
+    end_estado: string,
+    end_cep?: string
 }
