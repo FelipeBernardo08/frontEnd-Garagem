@@ -58,7 +58,7 @@
                     </select>
                 </div>
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <label for="cor">Cor</label>
                     <select class="form-select mt-2" aria-label="" name="cor" [(ngModel)]="carro.cor" required>
                         <option value="" disabled>Selecione</option>
@@ -66,16 +66,22 @@
                     </select>
                 </div>
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <label for="km_atual" class="form-label">Km/atual</label>
                     <input type="text" name="km_atual" [(ngModel)]="carro.km_atual" class="form-control"
                         placeholder="Digite o km..." required>
                 </div>
 
-                <div class="col-md-4 mt-1">
+                <div class="col-md-3 mt-1">
                     <label for="placa" class="form-label">Placa</label>
                     <input type="text" name="placa" [(ngModel)]="carro.placa" class="form-control"
                         placeholder="Digite a placa..." required>
+                </div>
+
+                <div class="col-md-3 mt-1">
+                    <label for="chassis" class="form-label">Chassis</label>
+                    <input type="text" name="chassis" [(ngModel)]="carro.chassis" class="form-control"
+                        placeholder="Digite o chassis..." required>
                 </div>
 
                 <div class="col-md-3 mt-1">

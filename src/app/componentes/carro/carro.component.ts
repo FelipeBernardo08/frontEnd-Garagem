@@ -28,10 +28,11 @@ export class CarroComponent implements OnInit {
           this.valorTotal += carros[i].valor
         }
       }
+      console.log(this.carro)
     })
     this.img = this.service.urlImg
+    console.log(this.img)
   }
-
 
 
   editar(id: number) {
