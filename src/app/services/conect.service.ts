@@ -17,7 +17,7 @@ export class ConectService {
 
   baseUrl = 'http://127.0.0.1:8000/api';
 
-  urlImg = 'http://127.0.0.1:8000/storage/app/public';
+  urlImg = 'http://127.0.0.1:8000/storage';
 
   constructor(private http: HttpClient) { }
 
