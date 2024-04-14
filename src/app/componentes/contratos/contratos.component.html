@@ -16,6 +16,13 @@
                 </strong>
             </h3>
         </div>
+        <div *ngIf="contrato.length == 0">
+            <div class="row">
+                <div class="text-center">
+                    <p>Nenhuma registro, clique <a routerLink="/contratos/criar">aqui</a> para criar</p>
+                </div>
+            </div>
+        </div>
         <div *ngFor="let item of contrato" class="col-md-4">
             <div class="d-flex justify-content-center">
                 <div class="card w-100" id="contratoCard">
