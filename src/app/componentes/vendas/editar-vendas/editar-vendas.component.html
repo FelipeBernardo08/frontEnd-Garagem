@@ -1,9 +1,8 @@
 <div class="d-flex justify-content-end">
     <button class="btn btn-sm btn-danger material-icons botao m-2 p-1" matTooltip="Retornar"
-        routerLink="/">reply</button>
+        routerLink="/venda">reply</button>
 </div>
 <section class="container">
-
     <div class="row mt-2">
         <div class="col-md-6">
             <div class="card">
@@ -108,7 +107,7 @@
 
         </div>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-3">
         <div class="col">
             <div *ngIf="vendas.id_carro != null">
                 <div class="card">
@@ -363,7 +362,177 @@
                 </div>
             </div>
             <div *ngIf="vendas.id_moto != null">
-                <p>moto</p>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-center">
+                            <strong>Veículo - Moto</strong>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="row form-floating needs-validation">
+
+                            <div class="col-md-6">
+                                <label for="listaMarca" class="form-label">Marca</label>
+                                <input name="marca" class="form-control" list="optionMarca" id="listaMarca"
+                                    placeholder="Pesquisar..." disabled [(ngModel)]="moto.marca">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="nomeModelo" class="form-label">Modelo</label>
+                                <input name="modelo" [(ngModel)]="moto.modelo" type="text" class="form-control"
+                                    placeholder="Digite o modelo..." disabled>
+                            </div>
+
+                            <div class="col-md-4 mt-1">
+                                <label for="potenciaMotor">Potencia Motor</label>
+                                <input type="text" class="form-control" name="potencia_motor"
+                                    [(ngModel)]="moto.potencia_motor" disabled>
+                            </div>
+
+
+                            <div class="col-md-4 mt-1">
+                                <label for="anoFabricacao" class="form-label">Ano Fabricação</label>
+                                <input type="text" class="form-control" name="ano_fabricacao"
+                                    [(ngModel)]="moto.ano_fabricacao" placeholder="Digite a fabricação..." disabled>
+                            </div>
+
+                            <div class="col-md-4 mt-1">
+                                <label for="cor">Cor</label>
+                                <input type="text" name="cor" class="form-control" [(ngModel)]="moto.cor" disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="combustivel">Combustível</label>
+                                <input type="text" class="form-control" name="combustivel"
+                                    [(ngModel)]="moto.combustivel" disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="cambio">Cambio</label>
+                                <input type="text" class="form-control" name="cambio" [(ngModel)]="moto.cambio"
+                                    disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="freio">Freio</label>
+                                <input type="text" class="form-control" name="freio" [(ngModel)]="moto.freio" disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="km_atual">Km/atual</label>
+                                <input type="text" class="form-control mt-2" name="km_atual" [(ngModel)]="moto.km_atual"
+                                    placeholder="Digite o KM..." disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="placa" class="form-label">Placa</label>
+                                <input type="text" name="placa" [(ngModel)]="moto.placa" class="form-control"
+                                    placeholder="Digite a placa..." disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="chassis" class="form-label">Chassis</label>
+                                <input type="text" name="chassis" [(ngModel)]="moto.chassis" class="form-control"
+                                    placeholder="Digite o chassis..." disabled>
+                            </div>
+
+                            <div class="col-md-3 mt-1">
+                                <label for="valor_pago" class="form-label">Valor Pago</label>
+                                <input type="text" class="form-control" name="valor_pago" [(ngModel)]="moto.valor_pago"
+                                    placeholder="R$" disabled>
+                            </div>
+
+
+                            <div class="col-md-3 mt-1">
+                                <label for="ipva_valor" class="form-label">Valor IPVA</label>
+                                <input type="text" class="form-control" name="ipva_valor" [(ngModel)]="moto.ipva_valor"
+                                    placeholder="R$" disabled>
+                            </div>
+
+
+                            <div class="col-md-4 mt-1">
+                                <label for="fipe" class="form-label">Valor FIPE</label>
+                                <input type="text" class="form-control" name="fipe" [(ngModel)]="moto.fipe"
+                                    placeholder="R$" disabled>
+                            </div>
+
+                            <div class="col-md-4 mt-1 mb-3">
+                                <label for="valor_venda" class="form-label">Valor Venda Final</label>
+                                <input type="text" class="form-control" name="valor" [(ngModel)]="moto.valor"
+                                    placeholder="R$" disabled>
+                            </div>
+
+                            <div class="col-md-4 mt-1">
+                                <label for="combustivel">Porcentagem Desconto</label>
+                                <input type="text" class="form-control mt-2" name="porcentagem_maxima" placeholder="%"
+                                    [(ngModel)]="moto.porcentagem_maxima" disabled>
+                            </div>
+
+                            <div class="container">
+                                <hr>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <div class="text-center">
+                                    <h3>Opicionais</h3>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="freio_abs"
+                                        [(ngModel)]="moto.freio_abs" value="true" id="flexCheckDefault" disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Freio ABS
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="alarme"
+                                        [(ngModel)]="moto.alarme" value="true" id="flexCheckDefault disabled" disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Alarme
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="injecao_eletronica"
+                                        [(ngModel)]="moto.injecao_eletronica" value="true" id="flexCheckDefault"
+                                        disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Injeção eletrônica
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="carregador_12v"
+                                        [(ngModel)]="moto.carregador_12v" value="true" id="flexCheckDefault" disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Carregador 12V
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-4 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="partida_eletrica"
+                                        [(ngModel)]="moto.partida_eletrica" value="true" id="flexCheckDefault" disabled>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Partida elétrica
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <textarea name="descricao" [(ngModel)]="moto.descricao" class="form-control" id=""
+                                    cols="30" rows="10" placeholder="Opcional" disabled></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

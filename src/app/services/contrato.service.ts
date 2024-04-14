@@ -20,4 +20,8 @@ export class ContratoService {
     return this.http.get<Contrato>(`${this.baseUrl}/contrato`);
   }
 
+  deleteContrato(id: any): Observable<Contrato> {
+    return this.http.delete<Contrato>(`${this.baseUrl}/contrato/${id}`);
+  }
+
 }

@@ -24,8 +24,17 @@
                     </div>
                     <div class="card-body" [innerHTML]="item.corpo_contrato"></div>
                     <div class="card-footer text-center">
-                        <button class="btn btn-sm btn-success" routerLink="/contratos/vincular/{{item.id}}">Vincular
-                            Contrato</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-sm btn-success w-100"
+                                    routerLink="/contratos/vincular/{{item.id}}">Vincular
+                                    Contrato</button>
+
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-sm btn-danger w-100" (click)="apagar(item.id)">Apagar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

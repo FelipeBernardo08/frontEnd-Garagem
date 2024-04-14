@@ -19,15 +19,23 @@ export class EditarVendasComponent implements OnInit {
 
   vendas: any;
   cliente: any;
-  carro: any
+  carro: any;
+  moto: any;
 
   ngOnInit(): void {
     this.vendaService.getVendaId(this.service.recuperarIdUrl()).subscribe((venda: any) => {
       this.vendas = venda;
-      this.carro = venda.carro
       this.cliente = venda.cliente
-      console.log(this.vendas)
+      if (venda.id_carro != null) {
+        this.carro = venda.carro
+      } else if (venda.id_moto != null) {
+        this.moto = venda.moto
+      }
     });
+  }
+
+  atribuirVeiculo(veiculo: any): void {
+
   }
 
 }

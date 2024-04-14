@@ -41,4 +41,10 @@ export class ContratosComponent implements OnInit {
     contrato[0].corpo_contrato = contrato[0].corpo_contrato.replace(/;/g, '<br><br>');
   }
 
+  public apagar(id: any): void {
+    this.contratoService.deleteContrato(id).subscribe(() => {
+      this.router.navigate(['/contratos']);
+    });
+  }
+
 }
