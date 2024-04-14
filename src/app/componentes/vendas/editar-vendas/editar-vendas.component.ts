@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Carro } from 'src/app/interface/carro';
 import { ConectService } from 'src/app/services/conect.service';
 import { VendaService } from 'src/app/services/venda.service';
 
@@ -17,10 +18,15 @@ export class EditarVendasComponent implements OnInit {
   ) { }
 
   vendas: any;
+  cliente: any;
+  carro: any
 
   ngOnInit(): void {
     this.vendaService.getVendaId(this.service.recuperarIdUrl()).subscribe((venda: any) => {
       this.vendas = venda;
+      this.carro = venda.carro
+      this.cliente = venda.cliente
+      console.log(this.vendas)
     });
   }
 
