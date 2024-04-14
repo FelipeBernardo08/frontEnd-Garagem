@@ -1,3 +1,7 @@
 .button-edit {
     cursor: pointer;
 }
+
+.botao {
+    border-radius: 50px;
+}
