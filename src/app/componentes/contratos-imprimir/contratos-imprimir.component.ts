@@ -24,7 +24,6 @@ export class ContratosImprimirComponent implements OnInit {
     this.contratoVinculadoService.readContratoVinculado(this.service.recuperarIdUrl()).subscribe((contrato: any) => {
       this.contratos = contrato;
       this.verificarModeloContrato(contrato);
-      console.log(this.contratos)
     })
   }
 

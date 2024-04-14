@@ -52,7 +52,6 @@ export class ContratosVincularComponent implements OnInit {
     if (index == 'venda') {
       this.vendaService.getVenda().subscribe((venda: any) => {
         this.vendas = venda;
-        console.log(venda);
       })
     } else if (index == 'personalizado') {
     }

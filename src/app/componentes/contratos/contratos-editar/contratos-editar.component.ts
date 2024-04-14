@@ -17,7 +17,6 @@ export class ContratosEditarComponent implements OnInit {
   ngOnInit(): void {
     this.contratoVinculado.getAllContratosVinculados().subscribe((contrato: any) => {
       this.contratos = contrato;
-      console.log(contrato);
     })
   }
 

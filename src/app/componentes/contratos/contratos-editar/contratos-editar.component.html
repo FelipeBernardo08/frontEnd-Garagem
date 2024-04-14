@@ -39,11 +39,11 @@
                                 Desativado
                             </td>
                             <td *ngIf="item.venda.carro != null">
-                                {{item.venda.carro.marca}} - {{item.venda.carro.modelo}} -
+                                {{item.venda.carro.marca}} {{item.venda.carro.modelo}}
                                 {{item.venda.carro.potencia_motor}}
                             </td>
                             <td *ngIf="item.venda.moto != null">
-                                {{item.venda.moto.marca}} - {{item.venda.moto.modelo}} -
+                                {{item.venda.moto.marca}} {{item.venda.moto.modelo}}
                                 {{item.venda.moto.potencia_motor}}
                             </td>
                             <td>
