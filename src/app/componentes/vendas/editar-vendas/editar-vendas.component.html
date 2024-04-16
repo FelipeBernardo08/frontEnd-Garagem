@@ -3,6 +3,15 @@
         routerLink="/venda">reply</button>
 </div>
 <section class="container">
+    <div class="row">
+        <div class="text-center">
+            <h3>
+                <strong>
+                    Venda #{{vendas.id}}
+                </strong>
+            </h3>
+        </div>
+    </div>
     <div class="row mt-2">
         <div class="col-md-6">
             <div class="card">
@@ -17,16 +26,23 @@
                 </div>
                 <div class="card-body">
                     <form class="row form-floating needs-validation">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mt-1">
+                            <label for="" class="form-label">Valor</label>
+                            <input type="text" class="form-control" name="valor_total" [(ngModel)]="vendas.valor_total"
+                                disabled>
+                        </div>
+                        <div class="col-md-6 mt-1">
+                            <label for="" class="form-label">Forma de Pagamento</label>
+                            <input type="text" class="form-control" name="forma_pgto" [(ngModel)]="vendas.forma_pgto" disabled>
+                        </div>
+                        <div class="col-md-12 mt-1">
                             <label class="form-label">Data</label>
                             <input type="text" class="form-control" name="created_at" [(ngModel)]="vendas.created_at"
                                 disabled>
                         </div>
-
-                        <div class="col-md-6">
-                            <label for="" class="form-label">Valor</label>
-                            <input type="text" class="form-control" name="valor_total" [(ngModel)]="vendas.valor_total"
-                                disabled>
+                        <div class="col-md-12 mt-1">
+                            <label class="form-label">Observacao</label>
+                           <textarea name="observacao" class="form-control" [(ngModel)]="vendas.observacao" id="" cols="30" rows="6" disabled></textarea>
                         </div>
                     </form>
                 </div>

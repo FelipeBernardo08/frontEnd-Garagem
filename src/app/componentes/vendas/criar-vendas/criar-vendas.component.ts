@@ -79,7 +79,9 @@ export class CriarVendasComponent implements OnInit {
     id_carro: '',
     id_moto: '',
     id_vendedor: '',
-    valor_total: ''
+    valor_total: '',
+    forma_pgto: '',
+    observacao: ''
   }
 
   user: Users[] = []

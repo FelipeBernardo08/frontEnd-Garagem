@@ -19,6 +19,7 @@ export class FormatarTextoService {
     contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace('estado_cliente', contrato.venda.cliente.end_estado);
     contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace('cep_cliente', contrato.venda.cliente.end_cep);
     contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace('valor_venda', contrato.venda.valor_total);
+    contrato.contrato.corpo_contrato = contrato.contrato.corpo_contrato.replace('forma_pagamento', contrato.venda.forma_pgto);
 
     if (contrato.venda.moto != null) {
       this.formatarVeiculoMoto(contrato)

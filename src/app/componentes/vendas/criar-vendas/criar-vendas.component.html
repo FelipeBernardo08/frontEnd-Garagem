@@ -223,6 +223,22 @@
                         required placeholder="R$">
                 </div>
 
+                <div class="col-md-6">
+                    <label for="forma_pgto" class="form-label mt-3">Forma de Pagamento</label>
+                    <select name="forma_pgto" [(ngModel)]="venda.forma_pgto" name="forma_pgto" class="form-select mt-2">
+                        <option value="" selected disabled>Selecione</option>
+                        <option value="pix">PIX</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="cartao">Cartão</option>
+                        <option value="cheque">Cheque</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="observacao" class="form-label mt-3">Observação</label>
+                    <textarea name="observacao" id="" cols="30" rows="10" class="form-control" [(ngModel)]="venda.observacao"></textarea>
+                </div>
+
                 <div class="row mt-3">
                     <div class="col-md-6">
                         <button class="w-100 btn btn-sm btn-danger m-3" routerLink="/venda">
