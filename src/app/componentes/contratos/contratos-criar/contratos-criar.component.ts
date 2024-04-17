@@ -21,16 +21,6 @@ export class ContratosCriarComponent implements OnInit {
     corpo_contrato: ''
   }
 
-  placeholder: string = `  Corpo...
-
-  Digite aqui o corpo do seu contrato. Utilize ao final de cada paragrafo a potuação ' ; '. 
-  Ex: Esta é uma linha com;
-  Parágrafo.
-  
-  Para fazer referencia á cliente utilize nome_cliente, cpf_cliente.
-  O mesmo para veiculo, exemplo: veiculo_marca, veiculo_modelo.
-  `;
-
   ngOnInit(): void {
     const forms = document.querySelectorAll('.needs-validation')
     Array.from(forms).forEach((form: any) => {

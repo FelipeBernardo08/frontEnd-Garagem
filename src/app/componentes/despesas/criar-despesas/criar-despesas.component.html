@@ -1,1 +1,55 @@
-<p>criar-despesas works!</p>
+<section class="container">
+    <div class="card mt-3">
+        <div class="card-header">
+            <div class="text-center">
+                <h3>
+                    <strong>
+                        Cadastrar Despesas
+                    </strong>
+                </h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="" class="row form-floating needs-validation">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Descricao</label>
+                    <textarea name="descricao" [(ngModel)]="despesas.descricao" placeholder="Descreva os dados da despesa..." class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-1">
+                        <label for="" class="form-label">Valor</label>
+                        <input type="text" class="form-control" required name="valor" [(ngModel)]="despesas.valor" placeholder="R$">
+                    </div>
+                    <div class="row mt-1">
+                        <label for="id_cliente" class="form-label">Cliente</label>
+                        <select name="id_cliente" class="form-select" id="">
+                            <option value="" disabled selected>Selecione - opcional</option>
+                            <option *ngFor="let item of clientes" [value]="item.id">Nome: {{item.nome}} - CPF: {{item.cpf}}</option>
+                        </select>
+                    </div>
+                    <div class="row mt-1">
+                        <label for="" class="form-label">Vendedor</label>
+                        <select name="id_vendedor" class="form-select" [(ngModel)]="despesas.id_vendedor" id="">
+                            <option value="" disabled selected>Selecione - opcional</option>
+                            <option *ngFor="let item of vendedores" [value]="item.id">Nome: {{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="row mt-1">
+                        <label for="" class="form-label">Venda</label>
+                        <select name="id_venda" class="form-select" [(ngModel)]="despesas.id_venda" id="">
+                            <option value="" disabled selected>Selecione - opcional</option>
+                            <option *ngFor="let item of vendas" [value]="item.id">#{{item.id}} - Cliente: {{item.cliente.nome}}</option>
+                        </select>
+                    </div>
+                    <div class="row mt-1">
+                        <label for="" class="form-label">Veículo</label>
+                        <select name="id_venda" class="form-select" [(ngModel)]="despesas.id_venda" id="">
+                            <option value="" disabled selected>Selecione - opcional</option>
+                            <option *ngFor="let item of vendas" [value]="item.id">#{{item.id}} - Cliente: {{item.cliente.nome}}</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
