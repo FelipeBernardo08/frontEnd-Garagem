@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DespesasService } from 'src/app/services/despesas.service';
 
 @Component({
   selector: 'app-despesas',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DespesasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private despesasService: DespesasService) { }
+
+  despesas: Array<any> = []
 
   ngOnInit(): void {
+    this.despesasService.getDespesas().subscribe((despesa: any) => {
+      this.despesas = despesa;
+      console.log(this.despesas)
+    })
   }
 
 }

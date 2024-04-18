@@ -16,4 +16,8 @@ export class DespesasService {
     return this.http.post<Despesas>(`${this.baseUrl}/despesas`, despesas);
   }
 
+  getDespesas(): Observable<Despesas>{
+    return this.http.get<Despesas>(`${this.baseUrl}/despesas`);
+  }
+
 }
