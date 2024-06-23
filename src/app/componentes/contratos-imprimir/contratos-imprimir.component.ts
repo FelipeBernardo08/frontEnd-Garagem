@@ -6,7 +6,23 @@ import { FormatarTextoService } from 'src/app/services/formatar-texto.service';
 
 @Component({
   selector: 'app-contratos-imprimir',
-  templateUrl: './contratos-imprimir.component.html',
+  template: `
+    <section id="contratoImprimir">
+    <div style="text-align: center; margin: 1%;">
+        <h3>
+            <strong>
+                {{contratos.contrato.titulo_contrato}}
+            </strong>
+        </h3>
+        <p [innerHTML]="contratos.contrato.corpo_contrato"></p>
+    </div>
+</section>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-sm btn-danger w-25 m-1" routerLink="/contratos/editar">Retornar</button>
+    <button class="btn btn-sm btn-success w-25 m-1" (click)="imprimir()">Imprimir</button>
+</div>
+  `,
   styleUrls: ['./contratos-imprimir.component.css']
 })
 export class ContratosImprimirComponent implements OnInit {
